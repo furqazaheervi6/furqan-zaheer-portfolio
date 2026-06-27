@@ -7,14 +7,16 @@ interface InterestVisualProps {
   className?: string;
 }
 
+type Ctx = CanvasRenderingContext2D;
+
 export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const ctxRaw = canvas.getContext("2d");
+    if (!ctxRaw) return;
 
     let animId: number;
     let time = 0;
@@ -26,18 +28,16 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
         canvas.height = rect.height * 2;
         canvas.style.width = rect.width + "px";
         canvas.style.height = rect.height + "px";
-        ctx.scale(2, 2);
+        ctxRaw.scale(2, 2);
       }
     };
     resize();
     window.addEventListener("resize", resize);
 
-    function drawArchitecture(w: number, h: number) {
-      // Arch + geometric pattern
+    function drawArchitecture(ctx: Ctx, w: number, h: number) {
       const cx = w / 2;
       const cy = h / 2 + 20;
 
-      // Arch outline
       ctx.beginPath();
       ctx.moveTo(20, h - 20);
       ctx.lineTo(20, 40);
@@ -47,7 +47,6 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
       ctx.lineWidth = 1;
       ctx.stroke();
 
-      // Inner arch
       ctx.beginPath();
       ctx.moveTo(40, h - 40);
       ctx.lineTo(40, 55);
@@ -57,12 +56,10 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
       ctx.lineWidth = 0.5;
       ctx.stroke();
 
-      // Columns
       ctx.fillStyle = "rgba(220, 38, 38, 0.03)";
       ctx.fillRect(18, 50, 4, h - 70);
       ctx.fillRect(w - 22, 50, 4, h - 70);
 
-      // Geometric grid within
       const gridSize = 12;
       for (let x = 50; x < w - 50; x += gridSize) {
         for (let y = 50; y < h - 50; y += gridSize) {
@@ -75,11 +72,10 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
       }
     }
 
-    function drawManga(w: number, h: number) {
+    function drawManga(ctx: Ctx, w: number, h: number) {
       const cx = w / 2;
       const cy = h / 2;
 
-      // Dark atmospheric rays
       for (let i = 0; i < 12; i++) {
         const angle = (Math.PI * 2 * i) / 12 + time * 0.02;
         ctx.beginPath();
@@ -92,7 +88,6 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
         ctx.stroke();
       }
 
-      // Grip marks (cross-hatch)
       for (let i = 0; i < 20; i++) {
         const x = 20 + Math.random() * (w - 40);
         const y = 20 + Math.random() * (h - 40);
@@ -106,7 +101,6 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
         ctx.stroke();
       }
 
-      // Orbiting dark eclipse ring
       ctx.beginPath();
       ctx.ellipse(cx, cy, 40, 15, time * 0.1, 0, Math.PI * 2);
       ctx.strokeStyle = "rgba(220, 38, 38, 0.08)";
@@ -114,11 +108,9 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
       ctx.stroke();
     }
 
-    function drawHistory(w: number, h: number) {
-      // Timeline + empire markers
+    function drawHistory(ctx: Ctx, w: number, h: number) {
       const y = h / 2;
 
-      // Timeline axis
       ctx.beginPath();
       ctx.moveTo(20, y);
       ctx.lineTo(w - 20, y);
@@ -126,7 +118,6 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
       ctx.lineWidth = 0.8;
       ctx.stroke();
 
-      // Era markers
       const eras = [
         { label: "ROM", x: 0.15 },
         { label: "GRK", x: 0.08 },
@@ -149,14 +140,12 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
         ctx.fillText(era.label, ex, y + 20);
       });
 
-      // Animated sweep dot
       const sweepX = 20 + (w - 40) * ((Math.sin(time * 0.15) + 1) / 2);
       ctx.beginPath();
       ctx.arc(sweepX, y, 2, 0, Math.PI * 2);
       ctx.fillStyle = "rgba(220, 38, 38, 0.2)";
       ctx.fill();
 
-      // Aux lines
       for (let i = 0; i < 3; i++) {
         const ly = y + (i + 1) * 20;
         ctx.beginPath();
@@ -170,12 +159,11 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
       }
     }
 
-    function drawMathematics(w: number, h: number) {
+    function drawMathematics(ctx: Ctx, w: number, h: number) {
       const cx = w / 2;
       const cy = h / 2;
-
-      // Algebraic grid (3D projected)
       const spacing = 20;
+
       for (let i = -5; i <= 5; i++) {
         const x = cx + i * spacing;
         ctx.beginPath();
@@ -195,12 +183,9 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
         ctx.stroke();
       }
 
-      // Animated waveforms (biophysical)
       ctx.beginPath();
       for (let x = -50; x <= 50; x++) {
-        const v =
-          Math.sin(x * 0.08 + time * 1.2) * 15 +
-          Math.sin(x * 0.15 + time * 0.8) * 8;
+        const v = Math.sin(x * 0.08 + time * 1.2) * 15 + Math.sin(x * 0.15 + time * 0.8) * 8;
         const px = cx + x;
         const py = cy + v;
         if (x === -50) ctx.moveTo(px, py);
@@ -210,12 +195,9 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
       ctx.lineWidth = 1;
       ctx.stroke();
 
-      // Second waveform
       ctx.beginPath();
       for (let x = -50; x <= 50; x++) {
-        const v =
-          Math.cos(x * 0.12 + time * 1.5) * 10 +
-          Math.sin(x * 0.2 + time) * 5;
+        const v = Math.cos(x * 0.12 + time * 1.5) * 10 + Math.sin(x * 0.2 + time) * 5;
         const px = cx + x;
         const py = cy + v - 30;
         if (x === -50) ctx.moveTo(px, py);
@@ -225,9 +207,8 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
       ctx.lineWidth = 0.5;
       ctx.stroke();
 
-      // Eigenvalue markers
       for (let i = 0; i < 4; i++) {
-        const angle = Math.PI * 2 * i / 4 + time * 0.1;
+        const angle = (Math.PI * 2 * i) / 4 + time * 0.1;
         const dx = Math.cos(angle) * 35;
         const dy = Math.sin(angle) * 35;
         ctx.beginPath();
@@ -238,7 +219,8 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
     }
 
     function draw() {
-      if (!canvas || !ctx) return;
+      if (!canvas || !ctxRaw) return;
+      const ctx: Ctx = ctxRaw;
       time += 0.03;
 
       const w = canvas.width / 2;
@@ -248,16 +230,16 @@ export function InterestVisual({ mode, className = "" }: InterestVisualProps) {
 
       switch (mode) {
         case "architecture":
-          drawArchitecture(w, h);
+          drawArchitecture(ctx, w, h);
           break;
         case "manga":
-          drawManga(w, h);
+          drawManga(ctx, w, h);
           break;
         case "history":
-          drawHistory(w, h);
+          drawHistory(ctx, w, h);
           break;
         case "mathematics":
-          drawMathematics(w, h);
+          drawMathematics(ctx, w, h);
           break;
       }
 
