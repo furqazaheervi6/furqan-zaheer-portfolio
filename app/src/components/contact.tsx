@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ScrollReveal } from "./scroll-reveal";
 
 export function Contact() {
-  const [email] = useState("furqan@zaheer.dev");
+  const [email] = useState("fzahee01@student.ubc.ca");
   const [copied, setCopied] = useState(false);
 
   const copyEmail = () => {
@@ -148,4 +148,5 @@ export function Contact() {
     </section>
   );
 }
+
 
