@@ -1,5 +1,6 @@
 import { ScrollReveal } from "./scroll-reveal";
 import { AnimatedCounter } from "./animated-counter";
+import { TextHoverViz } from "./text-hover-viz";
 
 const circuitUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/2b36a9a7-79fb-4b23-8b40-8a10e3ed0eff.jpg";
 const handGearsUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/1d03e0de-f890-424c-9a39-c78aeb2ab9b3.jpg";
@@ -65,13 +66,15 @@ export function About() {
 
           <ScrollReveal delay={200}>
             <div className="space-y-6 font-body text-sm leading-relaxed text-text-secondary">
-              <p>
-                I am a biophysics undergraduate focused on the intersection of
-                neural engineering, machine learning, and biological systems. My
-                work spans building personal intelligence infrastructure,
-                brain-computer interfaces, and software that bridges the gap
-                between biological signal processing and computational models.
-              </p>
+              <TextHoverViz>
+                <p>
+                  I am a biophysics undergraduate focused on the intersection of
+                  neural engineering, machine learning, and biological systems. My
+                  work spans building personal intelligence infrastructure,
+                  brain-computer interfaces, and software that bridges the gap
+                  between biological signal processing and computational models.
+                </p>
+              </TextHoverViz>
               <p>
                 I approach every domain — whether it is neural signal processing,
                 mathematical theory, or systems architecture — as an engineering
@@ -122,5 +125,7 @@ export function About() {
     </section>
   );
 }
+
+
 
 
