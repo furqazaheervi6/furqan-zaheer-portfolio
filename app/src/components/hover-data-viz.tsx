@@ -76,29 +76,32 @@ export function HoverDataViz() {
 
     function draw() {
       if (!canvas || !ctx) return;
+      const c = ctx;
+      const cont = containerRef.current;
+      if (!cont) return;
       timeRef.current += 0.016;
       const w = canvas.width;
       const h = canvas.height;
 
-      ctx.clearRect(0, 0, w, h);
+      c.clearRect(0, 0, w, h);
 
       if (activeIndexRef.current >= 0) {
         const el = elementsRef.current[activeIndexRef.current];
         const r = el.rect;
-        const containerRect = container.getBoundingClientRect();
+        const containerRect = cont.getBoundingClientRect();
         const cx = r.left - containerRect.left + r.width / 2;
         const cy = r.top - containerRect.top + r.height / 2;
         const maxDim = Math.max(r.width, r.height);
         const radius = maxDim * 1.8;
 
-        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+        const grad = c.createRadialGradient(cx, cy, 0, cx, cy, radius);
         grad.addColorStop(0, "rgba(220, 38, 38, 0.04)");
         grad.addColorStop(0.4, "rgba(220, 38, 38, 0.02)");
         grad.addColorStop(1, "transparent");
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-        ctx.fill();
+        c.fillStyle = grad;
+        c.beginPath();
+        c.arc(cx, cy, radius, 0, Math.PI * 2);
+        c.fill();
 
         const t = timeRef.current;
         const nodeCount = 6;
@@ -108,17 +111,17 @@ export function HoverDataViz() {
           const nx = cx + Math.cos(angle) * dist;
           const ny = cy + Math.sin(angle) * dist;
 
-          ctx.beginPath();
-          ctx.arc(nx, ny, 1.5 + Math.sin(t + i) * 0.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(220, 38, 38, ${0.15 + Math.sin(t + i) * 0.1})`;
-          ctx.fill();
+          c.beginPath();
+          c.arc(nx, ny, 1.5 + Math.sin(t + i) * 0.5, 0, Math.PI * 2);
+          c.fillStyle = `rgba(220, 38, 38, ${0.15 + Math.sin(t + i) * 0.1})`;
+          c.fill();
 
-          ctx.beginPath();
-          ctx.moveTo(cx, cy);
-          ctx.lineTo(nx, ny);
-          ctx.strokeStyle = `rgba(220, 38, 38, ${0.04 + Math.sin(t * 0.5 + i) * 0.03})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
+          c.beginPath();
+          c.moveTo(cx, cy);
+          c.lineTo(nx, ny);
+          c.strokeStyle = `rgba(220, 38, 38, ${0.04 + Math.sin(t * 0.5 + i) * 0.03})`;
+          c.lineWidth = 0.5;
+          c.stroke();
         }
 
         const metrics = [
@@ -130,10 +133,10 @@ export function HoverDataViz() {
         metrics.forEach((m, i) => {
           const mx = cx + radius * 1.2;
           const my = cy - 12 + i * 12;
-          ctx.font = "7px 'JetBrains Mono', monospace";
-          ctx.textAlign = "left";
-          ctx.fillStyle = `rgba(220, 38, 38, 0.12)`;
-          ctx.fillText(m, mx, my);
+          c.font = "7px 'JetBrains Mono', monospace";
+          c.textAlign = "left";
+          c.fillStyle = `rgba(220, 38, 38, 0.12)`;
+          c.fillText(m, mx, my);
         });
       }
 
@@ -156,4 +159,6 @@ export function HoverDataViz() {
     </div>
   );
 }
+
+
 
