@@ -12,6 +12,7 @@ import { Footer } from "../components/footer";
 import { SignalDivider } from "../components/signal-divider";
 import { ScrollProgress } from "../components/scroll-progress";
 import { CircuitTrace } from "../components/circuit-trace";
+import { DualityBridge } from "../components/duality-bridge";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -60,11 +61,15 @@ function Index() {
           <SignalDivider />
         </div>
 
+        <DualityBridge from="professional" />
+
         <Contact />
       </main>
       <Footer />
     </>
   );
 }
+
+
 
 

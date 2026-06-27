@@ -9,6 +9,7 @@ import { ScrollReveal } from "../components/scroll-reveal";
 import { PersonalHero } from "../components/personal-hero";
 import { PersonalPhilosophy } from "../components/personal-philosophy";
 import { InterestVisual } from "../components/interest-visual";
+import { DualityBridge } from "../components/duality-bridge";
 
 export const Route = createFileRoute("/personal")({
   component: PersonalPage,
@@ -221,6 +222,8 @@ function PersonalPage() {
           <SignalDivider />
         </div>
 
+        <DualityBridge from="personal" />
+
         <section id="contact" className="relative z-10 border-t border-border-subtle px-6 py-28 lg:px-12 lg:py-36">
           <div className="mx-auto max-w-[1200px] text-center">
             <ScrollReveal>
@@ -252,4 +255,6 @@ function PersonalPage() {
 }
 
 export default PersonalPage;
+
+
 
