@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-const navItems = [
+interface NavProps {
+  mode: "professional" | "personal";
+}
+
+const profItems = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Interests", href: "#interests" },
@@ -10,7 +14,16 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-export function Nav() {
+const personalItems = [
+  { label: "Philosophy", href: "#philosophy" },
+  { label: "Architecture", href: "#architecture" },
+  { label: "Manga & Art", href: "#manga-art" },
+  { label: "History", href: "#history" },
+  { label: "Mathematics", href: "#mathematics" },
+  { label: "Contact", href: "#contact" },
+];
+
+export function Nav({ mode }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -19,6 +32,10 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const items = mode === "professional" ? profItems : personalItems;
+  const otherMode = mode === "professional" ? "personal" : "professional";
+  const otherHref = mode === "professional" ? "/personal" : "/";
 
   return (
     <header
@@ -30,14 +47,14 @@ export function Nav() {
     >
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6 lg:px-12">
         <a
-          href="#"
+          href={mode === "professional" ? "/" : "/personal"}
           className="font-display text-lg font-bold tracking-tight text-text-primary transition-colors hover:text-vermilion"
         >
           FZ<span className="text-vermilion">.</span>
         </a>
 
-        <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => (
+        <div className="hidden items-center gap-1 md:flex">
+          {items.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -46,7 +63,32 @@ export function Nav() {
               {item.label}
             </a>
           ))}
-        </nav>
+
+          {/* Mode toggle */}
+          <div className="ml-4 flex items-center gap-1 border-l border-border-subtle pl-4">
+            <a
+              href={otherHref}
+              className={`px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] transition-all ${
+                mode === "professional"
+                  ? "text-vermilion"
+                  : "text-text-muted hover:text-text-secondary"
+              }`}
+            >
+              Professional
+            </a>
+            <span className="text-[10px] text-text-muted">/</span>
+            <a
+              href={otherHref}
+              className={`px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] transition-all ${
+                mode === "personal"
+                  ? "text-vermilion"
+                  : "text-text-muted hover:text-text-secondary"
+              }`}
+            >
+              Personal
+            </a>
+          </div>
+        </div>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -74,7 +116,29 @@ export function Nav() {
       {mobileOpen && (
         <nav className="border-t border-border-subtle bg-black-deep/95 backdrop-blur-lg md:hidden">
           <div className="flex flex-col px-6 py-4">
-            {navItems.map((item) => (
+            {/* Mode toggle in mobile */}
+            <div className="mb-3 flex gap-3 border-b border-border-subtle pb-3">
+              <a
+                href="/"
+                onClick={() => setMobileOpen(false)}
+                className={`font-mono text-[11px] uppercase tracking-[0.18em] ${
+                  mode === "professional" ? "text-vermilion" : "text-text-muted"
+                }`}
+              >
+                Professional
+              </a>
+              <span className="text-text-muted">/</span>
+              <a
+                href="/personal"
+                onClick={() => setMobileOpen(false)}
+                className={`font-mono text-[11px] uppercase tracking-[0.18em] ${
+                  mode === "personal" ? "text-vermilion" : "text-text-muted"
+                }`}
+              >
+                Personal
+              </a>
+            </div>
+            {items.map((item) => (
               <a
                 key={item.href}
                 href={item.href}

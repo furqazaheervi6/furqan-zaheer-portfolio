@@ -23,7 +23,7 @@ function Index() {
       <NeuralBackground />
       <CursorEffects />
       <ScrollProgress />
-      <Nav />
+      <Nav mode="professional" />
       <main className="relative">
         <Hero />
 
@@ -66,4 +66,5 @@ function Index() {
     </>
   );
 }
+
 
