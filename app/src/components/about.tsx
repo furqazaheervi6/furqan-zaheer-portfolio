@@ -10,22 +10,40 @@ export function About() {
       id="about"
       className="relative z-10 border-t border-border-subtle px-6 py-28 lg:px-12 lg:py-36"
     >
-      {/* Circuit schematic background */}
+      {/* Circuit schematic — tiled, screen-blended */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 bg-repeat opacity-[0.03]"
+          className="absolute inset-0"
           style={{
             backgroundImage: `url(${circuitUrl})`,
             backgroundSize: "400px 400px",
+            backgroundRepeat: "repeat",
+            opacity: "0.12",
+            mixBlendMode: "screen" as const,
             filter: "grayscale(100%) brightness(2) contrast(1.5)",
           }}
         />
-        {/* Hand/gears wireframe — right side */}
+        {/* Diagonal wipe fade */}
         <div
-          className="absolute -bottom-20 right-0 h-[60%] w-[40%] bg-contain bg-right-bottom bg-no-repeat opacity-[0.04]"
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(135deg, #080808 20%, transparent 50%, #080808 80%)",
+          }}
+        />
+        {/* Hand/gears wireframe — screen-blended from the right */}
+        <div
+          className="absolute bottom-0 right-0 h-[65%] w-[45%] bg-contain bg-right-bottom bg-no-repeat"
           style={{
             backgroundImage: `url(${handGearsUrl})`,
-            filter: "grayscale(100%) brightness(1.5)",
+            opacity: "0.1",
+            mixBlendMode: "screen" as const,
+            filter: "grayscale(100%) brightness(1.5) contrast(1.3)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to left, transparent 40%, #080808 100%)",
           }}
         />
       </div>
@@ -104,4 +122,5 @@ export function About() {
     </section>
   );
 }
+
 

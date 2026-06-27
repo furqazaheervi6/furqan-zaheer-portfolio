@@ -16,13 +16,21 @@ export function Skills() {
 
   return (
     <section id="skills" className="relative z-10 border-t border-border-subtle px-6 py-28 lg:px-12 lg:py-36">
-      {/* Biomechanical wireframe background */}
+      {/* Torso wireframe — embedded screen blend on the left */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute left-0 top-0 h-full w-1/2 bg-contain bg-left bg-no-repeat opacity-[0.025]"
+          className="absolute left-0 top-0 h-full w-1/2 bg-contain bg-left bg-no-repeat"
           style={{
             backgroundImage: `url(${torsoUrl})`,
-            filter: "grayscale(100%) brightness(1.5) contrast(1.2)",
+            opacity: "0.08",
+            mixBlendMode: "screen" as const,
+            filter: "grayscale(100%) brightness(1.5) contrast(1.3)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to right, transparent 20%, #080808 70%)",
           }}
         />
       </div>
@@ -68,4 +76,5 @@ export function Skills() {
     </section>
   );
 }
+
 

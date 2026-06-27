@@ -23,36 +23,45 @@ export function Hero() {
       id="hero"
       className="relative z-10 flex min-h-[100dvh] items-center justify-center overflow-hidden px-6 pt-24 lg:px-12"
     >
-      {/* Biomechanical background image — full bleed, very dim */}
+      {/* Biomechanical background — embedded with screen blend */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-[0.06]"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url(${mechanicalOrganismUrl})`,
-            filter: "grayscale(100%) contrast(1.4)",
+            opacity: "0.18",
+            mixBlendMode: "screen" as const,
+            filter: "grayscale(100%) contrast(1.6) brightness(1.2)",
           }}
         />
-        {/* Gradient vignette over the image */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black-deep via-black-deep/80 to-black-deep/60" />
+        {/* Edge fade — radial mask so the image disappears into the edges */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 70% 60% at 50% 50%, transparent 30%, #080808 100%)",
+          }}
+        />
+        {/* Gradient vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black-deep via-transparent to-black-deep/40" />
       </div>
 
-      {/* Mahoraga wheel — floating, subtle */}
-      <div className="pointer-events-none absolute right-[8%] top-[15%] z-0 h-32 w-32 opacity-[0.04] lg:h-48 lg:w-48">
+      {/* Mahoraga wheel — floating, screen blend */}
+      <div className="pointer-events-none absolute right-[8%] top-[12%] z-0 h-36 w-36 lg:h-52 lg:w-52" style={{ mixBlendMode: "screen" as const, opacity: "0.12" }}>
         <img
           src={mahoragaUrl}
           alt=""
           className="h-full w-full object-contain"
-          style={{ filter: "grayscale(100%) brightness(2)" }}
+          style={{ filter: "grayscale(100%) brightness(2) contrast(1.3)" }}
         />
       </div>
 
-      {/* Second wheel — lower left */}
-      <div className="pointer-events-none absolute bottom-[20%] left-[5%] z-0 h-20 w-20 opacity-[0.025] lg:h-32 lg:w-32">
+      {/* Second wheel — lower left, smaller */}
+      <div className="pointer-events-none absolute bottom-[18%] left-[5%] z-0 h-24 w-24 lg:h-36 lg:w-36" style={{ mixBlendMode: "screen" as const, opacity: "0.08" }}>
         <img
           src={mahoragaUrl}
           alt=""
           className="h-full w-full object-contain"
-          style={{ filter: "grayscale(100%) brightness(2)" }}
+          style={{ filter: "grayscale(100%) brightness(2) contrast(1.3)" }}
         />
       </div>
 
@@ -185,4 +194,5 @@ export function Hero() {
     </section>
   );
 }
+
 

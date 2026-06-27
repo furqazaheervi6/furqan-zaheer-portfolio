@@ -34,13 +34,21 @@ export function Projects() {
       id="projects"
       className="relative z-10 border-t border-border-subtle px-6 py-28 lg:px-12 lg:py-36"
     >
-      {/* Torso wireframe background */}
+      {/* Torso wireframe — embedded with screen blend */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute right-0 top-0 h-full w-1/2 bg-contain bg-right bg-no-repeat opacity-[0.03]"
+          className="absolute right-0 top-0 h-full w-1/2 bg-contain bg-right bg-no-repeat"
           style={{
             backgroundImage: `url(${torsoUrl})`,
-            filter: "grayscale(100%) brightness(1.5) contrast(1.2)",
+            opacity: "0.1",
+            mixBlendMode: "screen" as const,
+            filter: "grayscale(100%) brightness(1.5) contrast(1.3)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to left, transparent 30%, #080808 80%)",
           }}
         />
       </div>
@@ -131,13 +139,21 @@ function SoftwareProjects() {
       <div className="group grid gap-10 lg:grid-cols-[1.3fr_1fr]">
         {/* Pattern OS dashboard with circuit background */}
         <div className="relative overflow-hidden border border-border-card bg-black-elevated transition-all duration-500 group-hover:border-vermilion/20 group-hover:shadow-[0_0_40px_rgba(220,38,38,0.04)]">
-          {/* Circuit schematic overlay */}
+          {/* Circuit schematic — screen-blended inside the dashboard card */}
           <div
-            className="pointer-events-none absolute inset-0 opacity-[0.04]"
+            className="pointer-events-none absolute inset-0"
             style={{
               backgroundImage: `url(${circuitUrl})`,
-              backgroundSize: "300px 300px",
+              backgroundSize: "280px 280px",
+              opacity: "0.1",
+              mixBlendMode: "screen" as const,
               filter: "grayscale(100%) brightness(2) contrast(1.5)",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: "linear-gradient(135deg, transparent 30%, #080808 70%)",
             }}
           />
 
@@ -277,12 +293,14 @@ function NeurotechProjects() {
       <div className="group grid gap-10 lg:grid-cols-[1.2fr_1.3fr]">
         {/* EEG headset with eye schematic background */}
         <div className="relative flex items-center justify-center overflow-hidden border border-border-card bg-black-elevated p-10 transition-all duration-500 group-hover:border-vermilion/20">
-          {/* Eye schematic overlay */}
+          {/* Eye schematic — screen-blended behind the EEG visual */}
           <div
-            className="pointer-events-none absolute inset-0 bg-contain bg-center bg-no-repeat opacity-[0.06]"
+            className="pointer-events-none absolute inset-0 bg-contain bg-center bg-no-repeat"
             style={{
               backgroundImage: `url(${eyeUrl})`,
-              filter: "grayscale(100%) brightness(2) contrast(1.3)",
+              opacity: "0.15",
+              mixBlendMode: "screen" as const,
+              filter: "grayscale(100%) brightness(2) contrast(1.4)",
             }}
           />
           <div className="relative">
@@ -384,4 +402,7 @@ function ComingSoonProjects() {
     </div>
   );
 }
+
+
+
 
