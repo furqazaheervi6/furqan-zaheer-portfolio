@@ -5,6 +5,9 @@ import { HeroRing } from "./hero-ring";
 import { MouseTilt } from "./mouse-tilt";
 import { TypeDecrypt } from "./type-decrypt";
 
+const mechanicalOrganismUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/bc44fc3a-63bf-49c2-918d-a1d83c2ae748.jpg";
+const mahoragaUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/c2701bef-3191-492e-a965-921228b08dbe.jpg";
+
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -20,10 +23,43 @@ export function Hero() {
       id="hero"
       className="relative z-10 flex min-h-[100dvh] items-center justify-center overflow-hidden px-6 pt-24 lg:px-12"
     >
+      {/* Biomechanical background image — full bleed, very dim */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-[0.06]"
+          style={{
+            backgroundImage: `url(${mechanicalOrganismUrl})`,
+            filter: "grayscale(100%) contrast(1.4)",
+          }}
+        />
+        {/* Gradient vignette over the image */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black-deep via-black-deep/80 to-black-deep/60" />
+      </div>
+
+      {/* Mahoraga wheel — floating, subtle */}
+      <div className="pointer-events-none absolute right-[8%] top-[15%] z-0 h-32 w-32 opacity-[0.04] lg:h-48 lg:w-48">
+        <img
+          src={mahoragaUrl}
+          alt=""
+          className="h-full w-full object-contain"
+          style={{ filter: "grayscale(100%) brightness(2)" }}
+        />
+      </div>
+
+      {/* Second wheel — lower left */}
+      <div className="pointer-events-none absolute bottom-[20%] left-[5%] z-0 h-20 w-20 opacity-[0.025] lg:h-32 lg:w-32">
+        <img
+          src={mahoragaUrl}
+          alt=""
+          className="h-full w-full object-contain"
+          style={{ filter: "grayscale(100%) brightness(2)" }}
+        />
+      </div>
+
       {/* Animated geometric ring backdrop */}
       <HeroRing />
 
-      {/* Radial vignette */}
+      {/* Radial vermillion vignette */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.02)_0%,transparent_60%)]" />
 
       <div
@@ -31,7 +67,7 @@ export function Hero() {
         className="relative mx-auto max-w-[1200px] text-center opacity-0 transition-all duration-1000"
         style={{ transform: "translateY(24px)" }}
       >
-        {/* Animated scanning line across the top */}
+        {/* Scanning line */}
         <div className="relative mx-auto mb-8 h-[1px] w-32 overflow-hidden">
           <div className="absolute inset-0 animate-scan-line bg-vermilion/30" />
         </div>
@@ -79,7 +115,7 @@ export function Hero() {
           style={{ animationDelay: "1.4s", animationFillMode: "both" }}
         />
 
-        {/* Positioning line — with decrypt effect */}
+        {/* Positioning line — decrypt */}
         <div
           className="mx-auto mt-6 max-w-[600px] animate-fade-in-up"
           style={{ animationDelay: "0.8s", animationFillMode: "both" }}
@@ -102,19 +138,17 @@ export function Hero() {
               key={tag}
               className="group/tag relative overflow-hidden border border-border-subtle px-3 py-1.5 transition-all hover:border-vermilion/30"
             >
-              {/* Shimmer on hover */}
               <span className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-vermilion/5 to-transparent transition-transform duration-700 group-hover/tag:translate-x-full" />
               <span className="relative">{tag}</span>
             </span>
           ))}
         </div>
 
-        {/* CTAs — magnetic */}
+        {/* CTAs */}
         <div
           className="mt-10 flex animate-fade-in-up items-center justify-center gap-4"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-          {/* Primary CTA */}
           <a
             href="#projects"
             className="group relative inline-flex items-center gap-2 overflow-hidden border border-vermilion/60 px-7 py-3 font-mono text-xs uppercase tracking-[0.15em] text-vermilion transition-all"
@@ -125,8 +159,6 @@ export function Hero() {
               View projects
             </span>
           </a>
-
-          {/* Secondary CTA */}
           <a
             href="#contact"
             className="group relative inline-flex items-center gap-2 border border-border-subtle px-7 py-3 font-mono text-xs uppercase tracking-[0.15em] text-text-secondary transition-all hover:border-text-secondary hover:text-text-primary"

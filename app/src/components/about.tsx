@@ -1,13 +1,36 @@
 import { ScrollReveal } from "./scroll-reveal";
 import { AnimatedCounter } from "./animated-counter";
 
+const circuitUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/2b36a9a7-79fb-4b23-8b40-8a10e3ed0eff.jpg";
+const handGearsUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/1d03e0de-f890-424c-9a39-c78aeb2ab9b3.jpg";
+
 export function About() {
   return (
     <section
       id="about"
       className="relative z-10 border-t border-border-subtle px-6 py-28 lg:px-12 lg:py-36"
     >
-      <div className="mx-auto max-w-[1200px]">
+      {/* Circuit schematic background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-repeat opacity-[0.03]"
+          style={{
+            backgroundImage: `url(${circuitUrl})`,
+            backgroundSize: "400px 400px",
+            filter: "grayscale(100%) brightness(2) contrast(1.5)",
+          }}
+        />
+        {/* Hand/gears wireframe — right side */}
+        <div
+          className="absolute -bottom-20 right-0 h-[60%] w-[40%] bg-contain bg-right-bottom bg-no-repeat opacity-[0.04]"
+          style={{
+            backgroundImage: `url(${handGearsUrl})`,
+            filter: "grayscale(100%) brightness(1.5)",
+          }}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-[1200px]">
         <ScrollReveal>
           <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] text-text-muted">
             / About
@@ -47,8 +70,8 @@ export function About() {
           </ScrollReveal>
         </div>
 
-        {/* Stats row with animated counters */}
-        <div className="mt-20 grid grid-cols-2 gap-px border-t border-border-subtle bg-border-subtle lg:grid-cols-4">
+        {/* Stats row */}
+        <div className="relative mt-20 grid grid-cols-2 gap-px border-t border-border-subtle bg-border-subtle lg:grid-cols-4">
           {[
             { label: "Domains", value: 6, icon: "◆" },
             { label: "Projects Built", value: 12, icon: "◇", suffix: "+" },
@@ -56,7 +79,7 @@ export function About() {
             { label: "Active Systems", value: 4, icon: "△" },
           ].map((stat, i) => (
             <ScrollReveal key={stat.label} delay={200 + i * 100}>
-              <div className="group bg-black-deep px-6 py-8 transition-all duration-300 hover:bg-black-elevated lg:px-10 lg:py-10">
+              <div className="group relative bg-black-deep/90 px-6 py-8 backdrop-blur-sm transition-all duration-300 hover:bg-black-elevated/90 lg:px-10 lg:py-10">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-xs text-vermilion/40 transition-all duration-300 group-hover:text-vermilion/70">
                     {stat.icon}
