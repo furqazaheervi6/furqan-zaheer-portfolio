@@ -208,7 +208,7 @@ function PersonalDomainSection({
 function PersonalPage() {
   const sections: { id: string; domain: DomainKey; bgImageUrl?: string }[] = [
     { id: "architecture", domain: "architecture" },
-    { id: "manga-art", domain: "manga" },
+    { id: "manga-art", domain: "manga", bgImageUrl: "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/58baeca7-d2e4-4e43-a365-26b769babebf.jpg" },
     { id: "history", domain: "history", bgImageUrl: "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/0394f25c-044b-4f23-bfee-0bc71ac563c2.jpg" },
     { id: "mathematics", domain: "mathematics" },
   ];
@@ -276,6 +276,7 @@ function PersonalPage() {
 }
 
 export default PersonalPage;
+
 
 
 
