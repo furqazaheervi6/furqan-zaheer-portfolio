@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { NeuralBackground } from "../components/neural-background";
+import { CursorEffects } from "../components/cursor-effects";
 import { Nav } from "../components/nav";
 import { Hero } from "../components/hero";
 import { About } from "../components/about";
@@ -20,6 +21,7 @@ function Index() {
   return (
     <>
       <NeuralBackground />
+      <CursorEffects />
       <ScrollProgress />
       <Nav />
       <main className="relative">

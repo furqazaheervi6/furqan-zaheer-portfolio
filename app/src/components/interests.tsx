@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ScrollReveal } from "./scroll-reveal";
+import { InterestVisual } from "./interest-visual";
 
 type InterestKey = "architecture" | "manga" | "history" | "mathematics";
 
@@ -175,7 +176,8 @@ function InterestPanel({
   };
 }) {
   return (
-    <div className="grid gap-10 lg:grid-cols-[1.1fr_1.2fr]">
+    <div className="relative grid gap-10 lg:grid-cols-[1.1fr_1.2fr]">
+      <InterestVisual mode={data.title.toLowerCase().includes("manga") ? "manga" : data.title.toLowerCase().includes("architecture") ? "architecture" : data.title.toLowerCase().includes("history") ? "history" : "mathematics"} className="absolute inset-0 h-full w-full opacity-40" />
       <div>
         <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-vermilion">
           {data.subtitle}
@@ -211,4 +213,6 @@ function InterestPanel({
     </div>
   );
 }
+
+
 
