@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { HeroRing } from "./hero-ring";
 import { MouseTilt } from "./mouse-tilt";
-import { TypeDecrypt } from "./type-decrypt";
 
 const mechanicalOrganismUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/bc44fc3a-63bf-49c2-918d-a1d83c2ae748.jpg";
 const mahoragaUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/c2701bef-3191-492e-a965-921228b08dbe.jpg";
@@ -125,17 +124,16 @@ export function Hero() {
           style={{ animationDelay: "1.4s", animationFillMode: "both" }}
         />
 
-        {/* Positioning line — decrypt */}
+        {/* Positioning line — static */}
         <div
           className="mx-auto mt-6 max-w-[600px] animate-fade-in-up"
           style={{ animationDelay: "0.8s", animationFillMode: "both" }}
         >
-          <TypeDecrypt
-            text="Biophysics undergraduate building across neural engineering, machine learning, biological systems, software, mathematics, and personal intelligence tools."
-            className="font-body text-[clamp(0.95rem,1.6vw,1.25rem)] font-light leading-relaxed text-text-secondary"
-            speed={18}
-            delay={1600}
-          />
+          <p className="font-body text-[clamp(0.95rem,1.6vw,1.25rem)] font-light leading-relaxed text-text-secondary">
+            Biophysics undergraduate building across neural engineering, machine
+            learning, biological systems, software, mathematics, and personal
+            intelligence tools.
+          </p>
         </div>
 
         {/* Academic tags */}
@@ -195,6 +193,8 @@ export function Hero() {
     </section>
   );
 }
+
+
 
 
 
