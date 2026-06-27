@@ -9,6 +9,8 @@ import { Skills } from "../components/skills";
 import { Contact } from "../components/contact";
 import { Footer } from "../components/footer";
 import { SignalDivider } from "../components/signal-divider";
+import { ScrollProgress } from "../components/scroll-progress";
+import { CircuitTrace } from "../components/circuit-trace";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -18,18 +20,44 @@ function Index() {
   return (
     <>
       <NeuralBackground />
+      <ScrollProgress />
       <Nav />
       <main className="relative">
         <Hero />
-        <SignalDivider />
+
+        <div className="relative">
+          <CircuitTrace />
+          <SignalDivider />
+        </div>
+
         <About />
-        <SignalDivider />
+
+        <div className="relative">
+          <CircuitTrace />
+          <SignalDivider />
+        </div>
+
         <Projects />
-        <SignalDivider />
+
+        <div className="relative">
+          <CircuitTrace />
+          <SignalDivider />
+        </div>
+
         <Interests />
-        <SignalDivider />
+
+        <div className="relative">
+          <CircuitTrace />
+          <SignalDivider />
+        </div>
+
         <Skills />
-        <SignalDivider />
+
+        <div className="relative">
+          <CircuitTrace />
+          <SignalDivider />
+        </div>
+
         <Contact />
       </main>
       <Footer />
