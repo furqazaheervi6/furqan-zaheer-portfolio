@@ -110,10 +110,12 @@ function PersonalDomainSection({
   id,
   domain,
   index,
+  bgImageUrl,
 }: {
   id: string;
   domain: DomainKey;
   index: number;
+  bgImageUrl?: string;
 }) {
   const data = detailContent[domain];
 
@@ -129,6 +131,25 @@ function PersonalDomainSection({
             mode={domain}
             className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-30"
           />
+          {bgImageUrl && (
+            <div className="pointer-events-none absolute inset-0 z-0">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${bgImageUrl})`,
+                  opacity: "0.15",
+                  mixBlendMode: "screen" as const,
+                  filter: "grayscale(100%) contrast(1.3) brightness(1.2)",
+                }}
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: "linear-gradient(to right, #080808 0%, transparent 30%, transparent 70%, #080808 100%)",
+                }}
+              />
+            </div>
+          )}
 
           <div className="relative z-10">
             <ScrollReveal>
@@ -185,10 +206,10 @@ function PersonalDomainSection({
 }
 
 function PersonalPage() {
-  const sections: { id: string; domain: DomainKey }[] = [
+  const sections: { id: string; domain: DomainKey; bgImageUrl?: string }[] = [
     { id: "architecture", domain: "architecture" },
     { id: "manga-art", domain: "manga" },
-    { id: "history", domain: "history" },
+    { id: "history", domain: "history", bgImageUrl: "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/0394f25c-044b-4f23-bfee-0bc71ac563c2.jpg" },
     { id: "mathematics", domain: "mathematics" },
   ];
 
@@ -213,7 +234,7 @@ function PersonalPage() {
               <CircuitTrace />
               <SignalDivider />
             </div>
-            <PersonalDomainSection id={s.id} domain={s.domain} index={i} />
+            <PersonalDomainSection id={s.id} domain={s.domain} index={i} bgImageUrl={s.bgImageUrl} />
           </div>
         ))}
 
@@ -255,6 +276,11 @@ function PersonalPage() {
 }
 
 export default PersonalPage;
+
+
+
+
+
 
 
 
