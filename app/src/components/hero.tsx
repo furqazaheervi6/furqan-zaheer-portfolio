@@ -46,8 +46,8 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black-deep via-transparent to-black-deep/40" />
       </div>
 
-      {/* Mahoraga wheel — animated GIF, screen blend */}
-      <div className="pointer-events-none absolute right-[8%] top-[12%] z-0 h-36 w-36 lg:h-52 lg:w-52" style={{ mixBlendMode: "screen" as const, opacity: "0.12" }}>
+      {/* Mahoraga wheel — animated GIF, large overarching figure */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 lg:h-[500px] lg:w-[500px]" style={{ mixBlendMode: "screen" as const, opacity: "0.08" }}>
         <img
           src={mahoragaGifUrl}
           alt=""
@@ -56,16 +56,16 @@ export function Hero() {
         />
       </div>
 
-      {/* Second wheel — lower left, smaller */}
-      <div className="pointer-events-none absolute bottom-[18%] left-[5%] z-0 h-24 w-24 lg:h-36 lg:w-36" style={{ mixBlendMode: "screen" as const, opacity: "0.08" }}>
+      {/* Second wheel — lower left, smaller, static */}
+      <div className="pointer-events-none absolute bottom-[18%] left-[5%] z-0 h-16 w-16 lg:h-24 lg:w-24" style={{ mixBlendMode: "screen" as const, opacity: "0.05" }}>
         <img
           src={mahoragaUrl}
           alt=""
           className="h-full w-full object-contain"
           style={{ filter: "grayscale(100%) brightness(2) contrast(1.3)" }}
+
         />
       </div>
-
       {/* Animated geometric ring backdrop */}
       <HeroRing />
 
@@ -195,6 +195,9 @@ export function Hero() {
     </section>
   );
 }
+
+
+
 
 
 
