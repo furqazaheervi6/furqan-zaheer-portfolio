@@ -47,7 +47,7 @@ export function Hero() {
       </div>
 
       {/* Mahoraga wheel — animated GIF, large overarching figure */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 lg:h-[500px] lg:w-[500px]" style={{ mixBlendMode: "screen" as const, opacity: "0.08" }}>
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-80 w-80 -translate-x-1/2 -translate-y-1/2 lg:h-[650px] lg:w-[650px]" style={{ mixBlendMode: "screen" as const, opacity: "0.18" }}>
         <img
           src={mahoragaGifUrl}
           alt=""
@@ -195,6 +195,7 @@ export function Hero() {
     </section>
   );
 }
+
 
 
 
