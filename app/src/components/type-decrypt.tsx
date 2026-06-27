@@ -101,7 +101,7 @@ export function TypeDecrypt({
         <span
           key={i}
           style={{
-            color: cs.revealed ? "inherit" : COLORS[cs.colorIndex],
+            color: cs.revealed ? "#EAEAEA" : COLORS[cs.colorIndex],
             transition: "color 0.08s ease",
           }}
         >
@@ -111,4 +111,5 @@ export function TypeDecrypt({
     </div>
   );
 }
+
 
