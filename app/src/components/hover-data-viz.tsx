@@ -2,21 +2,11 @@
 
 import { useEffect, useRef } from "react";
 
-interface HoverNode {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  r: number;
-  connections: number[];
-}
-
 export function HoverDataViz() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const elementsRef = useRef<{ el: Element; rect: DOMRect }[]>([]);
   const activeIndexRef = useRef(-1);
-  const nodesRef = useRef<HoverNode[]>([]);
   const timeRef = useRef(0);
 
   useEffect(() => {
@@ -34,7 +24,6 @@ export function HoverDataViz() {
       canvas.height = rect.height;
     };
 
-    // Watch for all interactive elements inside the container
     const updateElements = () => {
       const interactives = container.querySelectorAll(
         "button, a, .group\\/card, .group\\/tag, .group\\/detail, .group\\/row, .group\\/item, [data-hover-viz]",
@@ -51,13 +40,11 @@ export function HoverDataViz() {
     });
     ro.observe(container);
 
-    // Initial setup
     requestAnimationFrame(() => {
       resize();
       updateElements();
     });
 
-    // Re-check elements on scroll/change
     let debounceTimer: ReturnType<typeof setTimeout>;
     const refresh = () => {
       clearTimeout(debounceTimer);
@@ -70,11 +57,9 @@ export function HoverDataViz() {
       const cx = e.clientX - rect.left;
       const cy = e.clientY - rect.top;
 
-      // Find which interactive element we're over
       let found = -1;
       for (let i = 0; i < elementsRef.current.length; i++) {
         const er = elementsRef.current[i];
-        // Refresh rect
         er.rect = er.el.getBoundingClientRect();
         const r = er.rect;
         const rx = r.left - rect.left;
@@ -106,7 +91,6 @@ export function HoverDataViz() {
         const maxDim = Math.max(r.width, r.height);
         const radius = maxDim * 1.8;
 
-        // Glow ring
         const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
         grad.addColorStop(0, "rgba(220, 38, 38, 0.04)");
         grad.addColorStop(0.4, "rgba(220, 38, 38, 0.02)");
@@ -116,7 +100,6 @@ export function HoverDataViz() {
         ctx.arc(cx, cy, radius, 0, Math.PI * 2);
         ctx.fill();
 
-        // Orbiting node ring
         const t = timeRef.current;
         const nodeCount = 6;
         for (let i = 0; i < nodeCount; i++) {
@@ -130,7 +113,6 @@ export function HoverDataViz() {
           ctx.fillStyle = `rgba(220, 38, 38, ${0.15 + Math.sin(t + i) * 0.1})`;
           ctx.fill();
 
-          // Connection to center
           ctx.beginPath();
           ctx.moveTo(cx, cy);
           ctx.lineTo(nx, ny);
@@ -139,7 +121,6 @@ export function HoverDataViz() {
           ctx.stroke();
         }
 
-        // Data metrics around the element
         const metrics = [
           `${Math.round((t * 10) % 1000).toString().padStart(3, "0")}`,
           `${(Math.sin(t * 0.7) * 50 + 50).toFixed(1)}%`,
