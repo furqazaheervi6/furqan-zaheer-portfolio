@@ -7,6 +7,7 @@ import { TypeDecrypt } from "./type-decrypt";
 
 const mechanicalOrganismUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/bc44fc3a-63bf-49c2-918d-a1d83c2ae748.jpg";
 const mahoragaUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/c2701bef-3191-492e-a965-921228b08dbe.jpg";
+const mahoragaGifUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/b4274feb-67d2-4eac-b1cd-36d6cd114cd5.gif";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -45,10 +46,10 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black-deep via-transparent to-black-deep/40" />
       </div>
 
-      {/* Mahoraga wheel — floating, screen blend */}
+      {/* Mahoraga wheel — animated GIF, screen blend */}
       <div className="pointer-events-none absolute right-[8%] top-[12%] z-0 h-36 w-36 lg:h-52 lg:w-52" style={{ mixBlendMode: "screen" as const, opacity: "0.12" }}>
         <img
-          src={mahoragaUrl}
+          src={mahoragaGifUrl}
           alt=""
           className="h-full w-full object-contain"
           style={{ filter: "grayscale(100%) brightness(2) contrast(1.3)" }}
@@ -194,5 +195,7 @@ export function Hero() {
     </section>
   );
 }
+
+
 
 
