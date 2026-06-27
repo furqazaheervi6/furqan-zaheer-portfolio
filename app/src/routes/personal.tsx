@@ -137,7 +137,7 @@ function PersonalDomainSection({
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${bgImageUrl})`,
-                  opacity: "0.15",
+                  opacity: "0.28",
                   mixBlendMode: "screen" as const,
                   filter: "grayscale(100%) contrast(1.3) brightness(1.2)",
                 }}
@@ -276,6 +276,7 @@ function PersonalPage() {
 }
 
 export default PersonalPage;
+
 
 
 
