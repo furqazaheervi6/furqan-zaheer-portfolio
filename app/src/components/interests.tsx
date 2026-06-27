@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { ScrollReveal } from "./scroll-reveal";
 
 type InterestKey = "architecture" | "manga" | "history" | "mathematics";
 
@@ -22,7 +23,7 @@ const interestData: Record<
     themes: [
       "Victorian Architecture",
       "Pure Brutalism",
-      "Islamic-Inspired Architecture",
+      "Islamic-Inspired",
       "Monumental Space",
       "Geometry & Ornament",
       "Concrete & Arches",
@@ -32,7 +33,7 @@ const interestData: Record<
     details: [
       "The tension between Victorian ornamental richness and brutalist structural honesty reveals the full spectrum of architectural expression.",
       "Islamic architecture's use of geometric patterns, muqarnas vaulting, and courtyard hierarchies offers a mathematical approach to sacred space.",
-      "Brutalism's raw concrete and monumental scale speaks to an architecture of truth — material, structure, and program expressed without掩饰.",
+      "Brutalism's raw concrete and monumental scale speaks to an architecture of truth — material, structure, and program expressed without disguise.",
       "Courtyard typologies across cultures demonstrate how enclosed space mediates between private and public, human and civic.",
     ],
   },
@@ -44,10 +45,10 @@ const interestData: Record<
     themes: [
       "Berserk — Dark Fantasy",
       "Naruto — Systemic Conflict",
-      "Vinland Saga — Redemption",
-      "The Climber — Solitude & Obsession",
-      "Samurai Jack — Geometric Purity",
-      "Vagabond — The Way of the Sword",
+      "Vinland Saga",
+      "The Climber",
+      "Samurai Jack",
+      "Vagabond",
       "Marvel/DC Cosmic Lore",
     ],
     details: [
@@ -64,12 +65,12 @@ const interestData: Record<
       "History as the study of systems — how institutions rise, maintain coherence, and dissolve. Roman law, Islamic scholarship, Greek philosophy, and pre-modern statecraft as case studies in system design at civilizational scale.",
     themes: [
       "Roman Empire",
-      "Greek Philosophy & Polis",
+      "Greek Philosophy",
       "Islamic Golden Age",
       "Pre-Modern Statecraft",
       "Warfare & Technology",
-      "Scholarship & Institutions",
-      "Memory & Historical Consciousness",
+      "Scholarship",
+      "Historical Consciousness",
     ],
     details: [
       "Roman engineering, law, and institutional design created a system that sustained governance across three continents for centuries — a case study in scalable administration.",
@@ -85,9 +86,9 @@ const interestData: Record<
       "Mathematics as the language in which the universe is written. Linear algebra as the grammar of neural computation, algebraic theory as the architecture of thought, and higher-dimensional mathematics as the terrain yet to be mapped.",
     themes: [
       "Linear Algebra",
-      "Algebraic & Computational Theory",
-      "Higher-Dimensional Mathematics",
-      "Biophysical Mathematics",
+      "Algebraic Theory",
+      "Higher-Dimensional Math",
+      "Biophysical Math",
       "Quantum Systems",
       "Game Theory",
     ],
@@ -102,6 +103,18 @@ const interestData: Record<
 
 export function Interests() {
   const [active, setActive] = useState<InterestKey>("architecture");
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+    contentRef.current.style.opacity = "0";
+    contentRef.current.style.transform = "translateY(6px)";
+    requestAnimationFrame(() => {
+      if (!contentRef.current) return;
+      contentRef.current.style.opacity = "1";
+      contentRef.current.style.transform = "translateY(0)";
+    });
+  }, [active]);
 
   return (
     <section
@@ -109,33 +122,40 @@ export function Interests() {
       className="relative z-10 border-t border-border-subtle px-6 py-28 lg:px-12 lg:py-36"
     >
       <div className="mx-auto max-w-[1200px]">
-        <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] text-text-muted">
-          / Interests
-        </div>
+        <ScrollReveal>
+          <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] text-text-muted">
+            / Interests
+          </div>
+        </ScrollReveal>
 
-        <h2 className="font-display text-[clamp(1.8rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-text-primary">
-          Domains of inquiry
-        </h2>
+        <ScrollReveal delay={100}>
+          <h2 className="font-display text-[clamp(1.8rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-text-primary">
+            Domains of inquiry
+          </h2>
+        </ScrollReveal>
 
-        {/* Interest tabs */}
-        <div className="mt-10 flex flex-wrap gap-1">
+        {/* Interest tabs with animated indicator */}
+        <div className="mt-10 flex flex-wrap gap-1 border-b border-border-subtle">
           {(Object.keys(interestData) as InterestKey[]).map((key) => (
             <button
               key={key}
               onClick={() => setActive(key)}
-              className={`px-5 pb-3 pt-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-all ${
+              className={`relative px-5 pb-3 pt-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-all ${
                 active === key
-                  ? "border-b border-vermilion text-text-primary"
-                  : "border-b border-transparent text-text-muted hover:text-text-secondary"
+                  ? "text-text-primary"
+                  : "text-text-muted hover:text-text-secondary"
               }`}
             >
               {interestData[key].title}
+              {active === key && (
+                <span className="absolute bottom-0 left-0 h-[1.5px] w-full bg-vermilion" />
+              )}
             </button>
           ))}
         </div>
 
-        {/* Content */}
-        <div className="mt-8">
+        {/* Content with transition */}
+        <div ref={contentRef} className="mt-8 transition-all duration-400">
           <InterestPanel data={interestData[active]} />
         </div>
       </div>
@@ -156,7 +176,6 @@ function InterestPanel({
 }) {
   return (
     <div className="grid gap-10 lg:grid-cols-[1.1fr_1.2fr]">
-      {/* Left */}
       <div>
         <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-vermilion">
           {data.subtitle}
@@ -168,7 +187,7 @@ function InterestPanel({
           {data.themes.map((theme) => (
             <span
               key={theme}
-              className="border border-border-subtle px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-text-muted"
+              className="group/tag border border-border-subtle px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-text-muted transition-all duration-300 hover:border-vermilion/30 hover:text-vermilion"
             >
               {theme}
             </span>
@@ -176,11 +195,14 @@ function InterestPanel({
         </div>
       </div>
 
-      {/* Right — details */}
+      {/* Right — details with animated vermillion border */}
       <div className="space-y-5">
         {data.details.map((detail, i) => (
-          <div key={i} className="border-l border-vermilion/30 pl-4">
-            <p className="font-body text-sm leading-relaxed text-text-secondary">
+          <div
+            key={i}
+            className="group/detail border-l border-vermilion/30 pl-4 transition-all duration-300 hover:border-vermilion/70"
+          >
+            <p className="font-body text-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover/detail:text-text-primary">
               {detail}
             </p>
           </div>
