@@ -99,6 +99,13 @@
   border-color: rgba(220, 38, 38, 0.4);
 }
 
+.portfolio-grid {
+  background-image:
+    linear-gradient(rgba(220, 38, 38, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220, 38, 38, 0.035) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
 /* === Animation Keyframes === */
 
 @keyframes letter-fade {
@@ -251,5 +258,4 @@
     transition-duration: 0.01ms !important;
   }
 }
-
 

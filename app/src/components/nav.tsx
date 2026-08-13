@@ -9,7 +9,6 @@ interface NavProps {
 const profItems = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Interests", href: "#interests" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
@@ -154,4 +153,3 @@ export function Nav({ mode }: NavProps) {
     </header>
   );
 }
-

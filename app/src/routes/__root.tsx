@@ -17,7 +17,7 @@ declare const __HF_DESIGN_INSPECTOR__: boolean;
 
 const DEFAULT_TITLE = "Furqan Zaheer — Biophysics, Neural Engineering & ML";
 const DEFAULT_DESCRIPTION =
-  "Biophysics undergraduate building across neural engineering, machine learning, biological systems, software, mathematics, and personal intelligence tools.";
+  "UBC biophysics undergraduate building evidence-backed tools in neural signal analysis, machine learning, and personal intelligence.";
 
 type AppMeta = {
   og_title?: string | null;
@@ -192,5 +192,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-
 

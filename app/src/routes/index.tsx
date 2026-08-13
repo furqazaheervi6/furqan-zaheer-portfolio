@@ -5,7 +5,6 @@ import { Nav } from "../components/nav";
 import { Hero } from "../components/hero";
 import { About } from "../components/about";
 import { Projects } from "../components/projects";
-import { Interests } from "../components/interests";
 import { Skills } from "../components/skills";
 import { Contact } from "../components/contact";
 import { Footer } from "../components/footer";
@@ -47,13 +46,6 @@ function Index() {
           <SignalDivider />
         </div>
 
-        <Interests />
-
-        <div className="relative">
-          <CircuitTrace />
-          <SignalDivider />
-        </div>
-
         <Skills />
 
         <div className="relative">
@@ -69,7 +61,6 @@ function Index() {
     </>
   );
 }
-
 
 
 

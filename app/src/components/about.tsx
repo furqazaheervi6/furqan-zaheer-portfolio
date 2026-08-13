@@ -55,12 +55,29 @@ export function About() {
           </div>
         </ScrollReveal>
 
-        <div className="grid gap-16 lg:grid-cols-[1.2fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <ScrollReveal delay={100}>
-            <h2 className="font-display text-[clamp(1.8rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-text-primary">
-              Treating living systems and intelligence as engineering problems to
-              decode.
-            </h2>
+            <div>
+              <h2 className="font-display text-[clamp(1.8rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-text-primary">
+                Treating living systems and intelligence as engineering problems
+                to decode.
+              </h2>
+              <div className="mt-8 grid max-w-xl gap-px border border-border-subtle bg-border-subtle sm:grid-cols-2">
+                {[
+                  ["Current focus", "Signal analysis + ML"],
+                  ["Working style", "Build, inspect, iterate"],
+                ].map(([label, value]) => (
+                  <div key={label} className="bg-black-card/90 px-5 py-4">
+                    <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-text-muted">
+                      {label}
+                    </div>
+                    <div className="mt-1.5 font-body text-sm text-text-primary">
+                      {value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
@@ -90,7 +107,7 @@ export function About() {
         </div>
 
         {/* Evidence row */}
-        <div className="relative mt-20 grid grid-cols-2 gap-px border-t border-border-subtle bg-border-subtle lg:grid-cols-4">
+        <div className="relative mt-16 grid grid-cols-2 gap-px border border-border-subtle bg-border-subtle lg:grid-cols-4">
           {[
             { label: "Degree path", value: "UBC", detail: "Biophysics", icon: "◆" },
             { label: "Public projects", value: "02", detail: "documented repos", icon: "◇" },
@@ -122,5 +139,4 @@ export function About() {
     </section>
   );
 }
-
 

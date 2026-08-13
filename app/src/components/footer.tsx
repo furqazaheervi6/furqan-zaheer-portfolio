@@ -12,7 +12,7 @@ export function Footer() {
             FZ<span className="text-vermilion">.</span>
           </span>
           <span className="h-3 w-px bg-border-subtle" />
-          <span>Biophysics &middot; Neural Engineering</span>
+          <span>UBC Biophysics &middot; Neural Engineering</span>
         </div>
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-2">
@@ -29,4 +29,3 @@ export function Footer() {
     </footer>
   );
 }
-

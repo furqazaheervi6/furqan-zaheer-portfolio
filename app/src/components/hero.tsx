@@ -179,25 +179,30 @@ export function Hero() {
           </a>
         </div>
 
-        {/* Status bar */}
+        {/* Research profile */}
         <div
-          className="mx-auto mt-16 flex animate-fade-in-up max-w-[400px] items-center justify-center gap-6 border-t border-border-subtle pt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-text-muted"
+          className="portfolio-grid mx-auto mt-14 grid max-w-[760px] animate-fade-in-up overflow-hidden border border-border-subtle text-left sm:grid-cols-3"
           style={{ animationDelay: "1.4s", animationFillMode: "both" }}
         >
-          <span className="flex items-center gap-2">
-            <span className="relative">
-              <span className="h-1.5 w-1.5 rounded-full bg-vermilion" />
-              <span className="absolute -inset-1 animate-ping rounded-full bg-vermilion/30" />
-            </span>
-            Open to research &amp; Summer 2027 internships
-          </span>
-          <span>VANCOUVER, BC</span>
+          {[
+            { label: "Study", value: "UBC Biophysics" },
+            { label: "Public work", value: "02 linked projects" },
+            { label: "Availability", value: "Research · Summer 2027" },
+          ].map((item) => (
+            <div key={item.label} className="border-b border-border-subtle bg-black-deep/70 px-5 py-4 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+              <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-text-muted">
+                {item.label}
+              </div>
+              <div className="mt-1.5 font-body text-sm font-medium text-text-primary">
+                {item.value}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
-
 
 
 

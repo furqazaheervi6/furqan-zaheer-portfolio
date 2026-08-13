@@ -62,6 +62,21 @@ export function Projects() {
           Systems I have built
         </h2>
 
+        <div className="mt-8 flex flex-col gap-4 border border-border-subtle bg-black-card/70 px-5 py-4 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-2xl font-body text-sm leading-relaxed text-text-secondary">
+            Two public projects, each with defined scope, methods, and a direct
+            link to the underlying work.
+          </p>
+          <a
+            href="https://github.com/furqazaheervi6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 font-mono text-[10px] uppercase tracking-[0.15em] text-vermilion transition-colors hover:text-text-primary"
+          >
+            Browse GitHub ↗
+          </a>
+        </div>
+
         {/* Tab bar */}
         <div className="mt-10 flex gap-1 border-b border-border-subtle">
           {tabs.map((tab) => (
@@ -232,6 +247,19 @@ function SoftwareProjects() {
                   ))}
                 </div>
               </div>
+              <div className="mt-4 grid grid-cols-2 gap-2 border-t border-border-subtle pt-4">
+                {[
+                  ["Interface", "React + Vite"],
+                  ["Storage", "SQLite"],
+                  ["Integrations", "Notion + Calendar"],
+                  ["AI layer", "Claude"],
+                ].map(([label, value]) => (
+                  <div key={label} className="border border-border-subtle bg-black-deep/60 px-3 py-2">
+                    <div className="text-[9px] uppercase tracking-[0.1em] text-text-muted">{label}</div>
+                    <div className="mt-1 text-[10px] text-text-primary">{value}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -342,6 +370,13 @@ function NeurotechProjects() {
               <line x1={100} y1={40} x2={100} y2={160} stroke="rgba(220,38,38,0.12)" strokeWidth="0.5" strokeDasharray="4 4" />
               <line x1={40} y1={100} x2={160} y2={100} stroke="rgba(220,38,38,0.12)" strokeWidth="0.5" strokeDasharray="4 4" />
             </svg>
+            <div className="mt-4 grid grid-cols-2 gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-text-muted">
+              {["128 Hz sampling", "1 second epochs", "PSD estimates", "Coherence"].map((item) => (
+                <span key={item} className="border border-border-subtle bg-black-deep/70 px-2.5 py-2 text-center">
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -435,6 +470,5 @@ function ComingSoonProjects() {
     </div>
   );
 }
-
 
 
