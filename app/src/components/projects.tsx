@@ -64,8 +64,8 @@ export function Projects() {
 
         <div className="mt-8 flex flex-col gap-4 border border-border-subtle bg-black-card/70 px-5 py-4 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl font-body text-sm leading-relaxed text-text-secondary">
-            Two public projects, each with defined scope, methods, and a direct
-            link to the underlying work.
+            Selected public and team work, each framed with scope, methods, and
+            direct evidence where it can be shared.
           </p>
           <a
             href="https://github.com/furqazaheervi6"
@@ -184,7 +184,7 @@ function SoftwareProjects() {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <span className="w-20 text-[10px] uppercase tracking-[0.12em] text-text-muted">
-                  Signal Bus
+                  Correlations
                 </span>
                 <div className="flex-1">
                   <AnimatedSignalBars />
@@ -223,13 +223,13 @@ function SoftwareProjects() {
               </div>
               <div className="border-t border-border-subtle pt-4">
                 <div className="mb-3 text-[10px] uppercase tracking-[0.12em] text-text-muted">
-                  Detected Patterns
+                  Analysis surfaces
                 </div>
                 <div className="space-y-1.5">
                   {[
-                    { label: "Productivity peak", range: "09:00 — 12:00", conf: "87%", barW: "87%" },
-                    { label: "Deep work window", range: "14:00 — 17:00", conf: "76%", barW: "76%" },
-                    { label: "Context switch cost", range: "avg 12 min", conf: "93%", barW: "93%" },
+                    { label: "Four-pillar scoring", range: "weekly review", conf: "system", barW: "86%" },
+                    { label: "Activity modifiers", range: "39-block model", conf: "inputs", barW: "72%" },
+                    { label: "Pearson correlations", range: "behavior + performance", conf: "analysis", barW: "92%" },
                   ].map((p) => (
                     <div key={p.label} className="group/row overflow-hidden border border-border-subtle px-3 py-2 transition-all duration-300 hover:border-vermilion/20 hover:bg-black-surface/50">
                       <div className="relative flex items-center justify-between">
@@ -275,13 +275,14 @@ function SoftwareProjects() {
             Personal Intelligence Infrastructure
           </div>
           <p className="mt-4 font-body text-sm leading-relaxed text-text-secondary">
-            A personal intelligence dashboard organized around physical, mental,
-            financial, and spiritual health. The prototype pairs a React
-            interface with a Node/Express API, SQLite storage, Notion and Google
-            Calendar connections, plus Claude-assisted journal analysis.
+            A shipped personal intelligence system organized around physical,
+            mental, financial, and spiritual health. It combines a 39-block
+            activity-modifier system, Pearson correlation analysis, AI-assisted
+            journaling, planning, weekly digests, Google Calendar OAuth, Notion
+            sync, and webhook support.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
-            {["React", "Node / Express", "SQLite", "Notion", "Google Calendar", "Claude AI"].map((tag) => (
+            {["4-pillar scoring", "39 activity modifiers", "Pearson correlations", "140+ end-to-end tests"].map((tag) => (
               <span key={tag} className="border border-border-subtle px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-text-muted transition-colors hover:border-vermilion/30 hover:text-vermilion">
                 {tag}
               </span>
@@ -296,9 +297,14 @@ function SoftwareProjects() {
             >
               View source
             </a>
-            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-muted">
-              Prototype · local-first
-            </span>
+            <a
+              href="https://patternos.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-border-subtle px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-text-secondary transition-colors hover:border-text-secondary hover:text-text-primary"
+            >
+              Live demo
+            </a>
           </div>
         </div>
       </div>
@@ -307,12 +313,11 @@ function SoftwareProjects() {
 }
 
 function NeurotechProjects() {
-  const pipelineSteps = [
-    { title: "Data Collection", desc: "Collected short EEG epochs from a Mark IV Ultracortex headset as the basis for quantitative signal analysis." },
-    { title: "Spectral Analysis", desc: "Computed Fourier transforms and power spectral density estimates to describe frequency-domain signal content." },
-    { title: "Cross Spectra", desc: "Calculated cross-spectral terms to characterize frequency-domain covariance between EEG channels." },
-    { title: "Coherence", desc: "Estimated normalized coherence after smoothing to examine consistency between signals across frequencies." },
-    { title: "Phase Shift", desc: "Computed phase differences as an additional view of the relationship between signals over frequency." },
+  const contributionSteps = [
+    { title: "Signal preparation", desc: "Developed EEG preprocessing and artifact-aware filtering workflows for motor-imagery BCI work." },
+    { title: "Feature representations", desc: "Applied Fourier and wavelet methods, plus common spatial patterns, to prepare ML-ready representations of intended movement." },
+    { title: "System handoff", desc: "Moved from signal-processing work into a firmware role, bridging EEG and sensor hardware, Bluetooth or serial communication, and downstream systems." },
+    { title: "Team outcome", desc: "Contributed to MindTap, an EEG-powered assistive smartphone-control interface. The MINT team received the Innovation Award in Honour of Ari Kinarthy at the 2026 Simon Cox Student Design Competition." },
   ];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -332,9 +337,8 @@ function NeurotechProjects() {
   return (
     <div className="space-y-12">
       <div className="group grid gap-10 lg:grid-cols-[1.2fr_1.3fr]">
-        {/* EEG headset with eye schematic background */}
+        {/* Abstract assistive-neurotech signal path */}
         <div className="relative flex items-center justify-center overflow-hidden border border-border-card bg-black-elevated p-10 transition-all duration-500 group-hover:border-vermilion/20">
-          {/* Eye schematic — screen-blended behind the EEG visual */}
           <div
             className="pointer-events-none absolute inset-0 bg-contain bg-center bg-no-repeat"
             style={{
@@ -349,12 +353,10 @@ function NeurotechProjects() {
               <g className="animate-rotate-slow origin-[100px_105px]">
                 <ellipse cx="100" cy="105" rx="82" ry="88" stroke="rgba(220,38,38,0.06)" strokeWidth="0.5" strokeDasharray="3 6" fill="none" />
               </g>
-              <ellipse cx="100" cy="105" rx="72" ry="78" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" fill="none" />
+              <ellipse cx="78" cy="102" rx="48" ry="60" stroke="rgba(255,255,255,0.1)" strokeWidth="1.5" fill="none" />
               {[
-                { x: 100, y: 30, label: "Fz" }, { x: 65, y: 50, label: "F3" }, { x: 135, y: 50, label: "F4" },
-                { x: 100, y: 75, label: "Cz" }, { x: 55, y: 85, label: "C3" }, { x: 145, y: 85, label: "C4" },
-                { x: 100, y: 110, label: "Pz" }, { x: 60, y: 120, label: "P3" }, { x: 140, y: 120, label: "P4" },
-                { x: 100, y: 150, label: "Oz" },
+                { x: 78, y: 46, label: "EEG" }, { x: 48, y: 72, label: "DSP" }, { x: 108, y: 72, label: "CSP" },
+                { x: 48, y: 112, label: "BLE" }, { x: 108, y: 112, label: "I/O" }, { x: 78, y: 146, label: "FW" },
               ].map((el, i) => (
                 <g key={i}>
                   <circle cx={el.x} cy={el.y} r={8} fill={`rgba(220,38,38,${0.02 + Math.sin(Date.now() * 0.001 + i) * 0.01})`} className="animate-pulse-node" style={{ animationDelay: `${i * 0.15}s` }} />
@@ -362,16 +364,13 @@ function NeurotechProjects() {
                   <text x={el.x} y={el.y - 10} textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="8" fontFamily="JetBrains Mono, monospace">{el.label}</text>
                 </g>
               ))}
-              {[0, 1, 2].map((row) => (
-                <g key={row} className="animate-draw-line" style={{ animationDelay: `${0.5 + row * 0.3}s` }}>
-                  <path d={`M 55 ${85 + row * 25} Q ${70 + Math.sin(Date.now() * 0.001 + row) * 3} ${80 + row * 25}, 85 ${85 + row * 25} T 115 ${85 + row * 25} T 145 ${85 + row * 25}`} stroke="rgba(220,38,38,0.08)" strokeWidth="0.5" fill="none" />
-                </g>
-              ))}
-              <line x1={100} y1={40} x2={100} y2={160} stroke="rgba(220,38,38,0.12)" strokeWidth="0.5" strokeDasharray="4 4" />
-              <line x1={40} y1={100} x2={160} y2={100} stroke="rgba(220,38,38,0.12)" strokeWidth="0.5" strokeDasharray="4 4" />
+              <path d="M 123 102 H 158" stroke="rgba(220,38,38,0.35)" strokeWidth="1.5" strokeDasharray="4 4" className="animate-draw-line" />
+              <rect x="158" y="82" width="28" height="40" rx="4" stroke="rgba(255,255,255,0.24)" strokeWidth="1" />
+              <circle cx="172" cy="112" r="3" fill="rgba(220,38,38,0.7)" />
+              <text x="172" y="76" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="7" fontFamily="JetBrains Mono, monospace">COMMAND</text>
             </svg>
             <div className="mt-4 grid grid-cols-2 gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-text-muted">
-              {["128 Hz sampling", "1 second epochs", "PSD estimates", "Coherence"].map((item) => (
+              {["EEG workflows", "Motor imagery", "Firmware handoff", "Assistive control"].map((item) => (
                 <span key={item} className="border border-border-subtle bg-black-deep/70 px-2.5 py-2 text-center">
                   {item}
                 </span>
@@ -382,49 +381,61 @@ function NeurotechProjects() {
 
         <div className="flex flex-col justify-center">
           <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-vermilion">
-            Documented Project
+            Flagship team project · 2026 Simon Cox Innovation Award
           </div>
           <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] text-text-primary lg:text-3xl">
-            EEG Quantitative Statistical Analysis
+            MindTap
           </h3>
           <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-text-muted">
-            Spectral &amp; coherence analysis for EEG signals
+            EEG-powered assistive smartphone control · UBC MINT
           </div>
           <div className="mt-6 flex gap-2">
-            {pipelineSteps.map((_, i) => (
+            {contributionSteps.map((_, i) => (
               <button key={i} onClick={() => setActiveStep(i)} className={`h-1 flex-1 transition-all duration-500 ${i === activeStep ? "bg-vermilion" : "bg-border-subtle hover:bg-text-muted/30"}`} />
             ))}
           </div>
           <div ref={pipelineRef} className="mt-6 min-h-[180px] transition-all duration-400">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[11px] text-vermilion">{String(activeStep + 1).padStart(2, "0")}</span>
-              <h4 className="font-mono text-xs uppercase tracking-[0.15em] text-text-primary">{pipelineSteps[activeStep].title}</h4>
+              <h4 className="font-mono text-xs uppercase tracking-[0.15em] text-text-primary">{contributionSteps[activeStep].title}</h4>
             </div>
-            <p className="mt-3 font-body text-sm leading-relaxed text-text-secondary">{pipelineSteps[activeStep].desc}</p>
+            <p className="mt-3 font-body text-sm leading-relaxed text-text-secondary">{contributionSteps[activeStep].desc}</p>
           </div>
           <div className="mt-4 flex gap-2">
-            {pipelineSteps.map((_, i) => (
+            {contributionSteps.map((_, i) => (
               <button key={i} onClick={() => setActiveStep(i)} className={`h-2 w-2 rounded-full transition-all duration-300 ${i === activeStep ? "bg-vermilion shadow-[0_0_8px_rgba(220,38,38,0.3)]" : "bg-border-subtle hover:bg-text-muted/40"}`} />
             ))}
           </div>
           <div className="mt-6 flex flex-wrap gap-2">
-            {["EEG", "Fourier Analysis", "Power Spectral Density", "Coherence", "Phase Analysis"].map((tag) => (
+            {["EEG preprocessing", "Artifact-aware filtering", "Fourier / wavelets", "Common spatial patterns", "Firmware"].map((tag) => (
               <span key={tag} className="border border-border-subtle px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-text-muted transition-colors hover:border-vermilion/30 hover:text-vermilion">{tag}</span>
             ))}
           </div>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href="https://github.com/furqazaheervi6/EEG-Quantitative-Statistical-Analysis"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-vermilion/50 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-vermilion transition-colors hover:border-vermilion hover:bg-vermilion/5"
-            >
-              View analysis
-            </a>
-            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-muted">
-              Mark IV Ultracortex
-            </span>
-          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-6 border-t border-border-subtle pt-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-text-muted">
+          Supporting technical proof
+        </div>
+        <div>
+          <h4 className="font-display text-xl font-semibold tracking-[-0.02em] text-text-primary">
+            EEG Quantitative Statistical Analysis
+          </h4>
+          <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-text-secondary">
+            A public signal-analysis project using Mark IV Ultracortex data:
+            128 Hz sampling, one-second epochs, Fourier transforms, power
+            spectral density, cross spectra, smoothing, coherence, and phase
+            shift analysis.
+          </p>
+          <a
+            href="https://github.com/furqazaheervi6/EEG-Quantitative-Statistical-Analysis"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex border border-vermilion/50 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-vermilion transition-colors hover:border-vermilion hover:bg-vermilion/5"
+          >
+            View analysis
+          </a>
         </div>
       </div>
     </div>
@@ -432,43 +443,64 @@ function NeurotechProjects() {
 }
 
 function ComingSoonProjects() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const projects = [
-    { title: "Neural Decoder Framework", desc: "A modular framework for real-time neural signal decoding, designed to generalize across EEG, ECoG, and fNIRS modalities.", tags: ["Neural Engineering", "Signal Processing", "Python"] },
-    { title: "Biophysical Simulation Engine", desc: "Numerical simulation of neural population dynamics using biophysically realistic conductance-based models.", tags: ["Computational Neuroscience", "Simulation", "Mathematics"] },
-    { title: "Cognitive Workbench", desc: "A unified workspace for personal intelligence — integrating knowledge graphs, task archaeology, and cognitive pattern analysis.", tags: ["Personal Intelligence", "Knowledge Graphs", "HCI"] },
-    { title: "Algebraic Theory of Neural Computation", desc: "Formalizing neural computation through the lens of linear algebra, representation theory, and category theory.", tags: ["Mathematical Theory", "Algebra", "Neural Computation"] },
-  ];
-
   return (
-    <div>
+    <div className="space-y-8">
       <p className="mb-8 max-w-2xl font-body text-sm leading-relaxed text-text-secondary">
-        These are active questions and possible future systems, not completed
-        projects. They show the directions I am investigating as I build a
-        stronger research and engineering foundation.
+        One research build, deliberately staged to serve a future research,
+        co-op, and graduate-school trajectory. This is not a clinical product
+        and no clinical-performance claim is being made.
       </p>
-      <div className="grid gap-6 sm:grid-cols-2">
-      {projects.map((p, i) => (
-        <div
-          key={p.title}
-          className="group/card relative overflow-hidden border border-border-card bg-black-elevated p-6 transition-all duration-500 hover:border-vermilion/25"
-          onMouseEnter={() => setHoveredIndex(i)}
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
-          <span className={`absolute right-0 top-0 h-0 w-0 border-t-[24px] border-r-[24px] border-t-transparent border-r-vermilion/20 transition-all duration-500 ${hoveredIndex === i ? "opacity-100" : "opacity-0"}`} />
-          <span className={`absolute left-0 top-0 h-[1px] bg-vermilion/30 transition-all duration-700 ${hoveredIndex === i ? "w-full" : "w-0"}`} />
-          <h4 className="font-display text-lg font-semibold tracking-[-0.01em] text-text-primary transition-colors duration-300 group-hover/card:text-vermilion/90">{p.title}</h4>
-          <p className="mt-2 font-body text-sm leading-relaxed text-text-secondary">{p.desc}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {p.tags.map((t) => (
-              <span key={t} className="border border-border-subtle px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-text-muted transition-colors group-hover/card:border-vermilion/20 group-hover/card:text-vermilion/60">{t}</span>
-            ))}
+      <div className="group/card relative overflow-hidden border border-border-card bg-black-elevated p-6 transition-all duration-500 hover:border-vermilion/25 lg:p-9">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.08),transparent_42%)]" />
+        <div className="relative grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-vermilion">
+              Research build in progress
+            </div>
+            <h4 className="mt-3 font-display text-2xl font-semibold tracking-[-0.02em] text-text-primary">
+              Mercurion
+            </h4>
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted">
+              Clinical-first · non-invasive-first · message-first
+            </p>
+            <p className="mt-5 max-w-xl font-body text-sm leading-relaxed text-text-secondary">
+              An exploration of reliable neural-intent interfaces for people
+              with severe speech or motor impairment. The immediate objective is
+              not a finished product: it is to record a first personal EEG
+              session and establish a quality-scored acquisition pipeline.
+            </p>
+            <a
+              href="https://mercurion-ten.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex border border-vermilion/50 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-vermilion transition-colors hover:border-vermilion hover:bg-vermilion/5"
+            >
+              View research build
+            </a>
+          </div>
+          <div className="border border-border-subtle bg-black-deep/70 p-5">
+            <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-text-muted">
+              Staged path
+            </div>
+            <ol className="mt-5 space-y-4">
+              {[
+                ["Now", "Personal EEG recording"],
+                ["Pipeline", "BrainFlow, artifact handling, BIDS, quality scoring"],
+                ["Next", "Simple EEG / EOG event detection"],
+                ["Later", "External command runtime and evidence report"],
+              ].map(([stage, detail], index) => (
+                <li key={stage} className="flex gap-3">
+                  <span className="font-mono text-[10px] text-vermilion/80">0{index + 1}</span>
+                  <div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-primary">{stage}</div>
+                    <div className="mt-1 font-body text-xs leading-relaxed text-text-secondary">{detail}</div>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
-      ))}
       </div>
     </div>
   );
 }
-
-

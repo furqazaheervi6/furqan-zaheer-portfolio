@@ -6,12 +6,12 @@ const torsoUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmR
 
 export function Skills() {
   const skillCategories = [
-    { label: "Programming & Software", items: ["Python", "TypeScript / JavaScript", "C / C++", "MATLAB", "React", "Node.js"], note: "Systems and signal processing" },
-    { label: "Machine Learning & AI", items: ["PyTorch", "TensorFlow", "Scikit-learn", "Signal Classification", "Time-Series Analysis", "Deep Learning"], note: "Neural decoding and pattern detection" },
-    { label: "Neural Engineering", items: ["EEG Signal Processing", "BCI System Design", "Electrode Montage Strategy", "Real-Time Biosignal Analysis", "Neurophysiology"], note: "Brain-computer interfaces" },
-    { label: "Mathematics & Theory", items: ["Linear Algebra", "Differential Equations", "Probability & Statistics", "Computational Theory", "Game Theory", "Biophysical Modeling"], note: "Formal foundations" },
-    { label: "Systems & Infrastructure", items: ["Linux / Unix", "Git / CI-CD", "Cloud Deployment", "API Design", "Database Architecture"], note: "Engineering at scale" },
-    { label: "Hardware & Lab", items: ["Oscilloscope", "Microcontroller Programming", "Circuit Design", "Lab Equipment", "Data Acquisition"], note: "Bridging digital and physical" },
+    { label: "Programming & Software", items: ["Python", "TypeScript / JavaScript", "C / C++", "MATLAB", "React", "Node.js"], note: "Applications and analysis" },
+    { label: "EEG Signal Processing", items: ["EEG preprocessing", "Artifact-aware filtering", "Fourier / wavelet analysis", "Common spatial patterns", "Spectral / coherence analysis", "Feature extraction"], note: "Motor-imagery workflows" },
+    { label: "Embedded Neurotech", items: ["Firmware prototyping", "Sensor integration", "BLE / serial data paths", "Data acquisition", "Microcontroller programming"], note: "Hardware-to-software handoff" },
+    { label: "Research Foundations", items: ["Linear algebra", "Probability & statistics", "Differential equations", "Biophysical modelling"], note: "Quantitative biology" },
+    { label: "Tools & Integrations", items: ["Git", "Linux / Unix", "SQLite", "Notion API", "Google Calendar API", "Webhooks"], note: "Inspectability and workflow" },
+    { label: "In Development", items: ["BrainFlow acquisition", "BIDS formatting", "EEG quality scoring", "Small classifier training"], note: "Mercurion research build" },
   ];
 
   return (
@@ -44,7 +44,7 @@ export function Skills() {
 
         <ScrollReveal delay={100}>
           <h2 className="font-display text-[clamp(1.8rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-text-primary">
-            Technical toolchain
+            Current technical toolkit
           </h2>
         </ScrollReveal>
 
@@ -76,5 +76,4 @@ export function Skills() {
     </section>
   );
 }
-
 

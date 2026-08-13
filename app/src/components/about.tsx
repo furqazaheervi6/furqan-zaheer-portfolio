@@ -59,13 +59,13 @@ export function About() {
           <ScrollReveal delay={100}>
             <div>
               <h2 className="font-display text-[clamp(1.8rem,4vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-text-primary">
-                Treating living systems and intelligence as engineering problems
-                to decode.
+                Building careful tools at the boundary of living systems,
+                signals, and assistive technology.
               </h2>
               <div className="mt-8 grid max-w-xl gap-px border border-border-subtle bg-border-subtle sm:grid-cols-2">
                 {[
-                  ["Current focus", "Signal analysis + ML"],
-                  ["Working style", "Build, inspect, iterate"],
+                  ["Current focus", "EEG + embedded neurotech"],
+                  ["Working style", "Build, measure, iterate"],
                 ].map(([label, value]) => (
                   <div key={label} className="bg-black-card/90 px-5 py-4">
                     <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-text-muted">
@@ -84,23 +84,25 @@ export function About() {
             <div className="space-y-6 font-body text-sm leading-relaxed text-text-secondary">
               <TextHoverViz>
                 <p>
-                  I am a UBC biophysics undergraduate interested in neural
-                  engineering, machine learning, and biological systems. I build
-                  small, inspectable systems that connect signal analysis,
-                  mathematical reasoning, and useful software.
+                  I am a UBC biophysics undergraduate working at UBC MINT,
+                  where I now develop firmware for accessibility-oriented
+                  neurotechnology prototypes. Earlier, I contributed EEG
+                  signal-processing workflows for MindTap, the team’s
+                  assistive smartphone-control interface.
                 </p>
               </TextHoverViz>
               <p>
-                My current public work includes an EEG spectral and coherence
-                analysis project for signals collected with a Mark IV Ultracortex
-                headset, plus Pattern OS, a personal intelligence dashboard that
-                connects Notion, Google Calendar, and AI-assisted reflection.
+                MindTap received the Innovation Award in Honour of Ari
+                Kinarthy at the 2026 Simon Cox Student Design Competition. My
+                own documented work also includes EEG spectral and coherence
+                analysis and Pattern OS, a personal intelligence system for
+                reflection, planning, and correlation analysis.
               </p>
               <p>
-                I am building the quantitative foundation for research in
-                biophysics and neural engineering, with particular interest in
-                how linear algebra, signal processing, and machine learning can
-                help model living systems.
+                I am building toward a research and co-op path in biophysics
+                and neural engineering. Mercurion is the research build that
+                connects that path: a clinical-first, non-invasive exploration
+                of neural intent for assistive communication.
               </p>
             </div>
           </ScrollReveal>
@@ -109,10 +111,10 @@ export function About() {
         {/* Evidence row */}
         <div className="relative mt-16 grid grid-cols-2 gap-px border border-border-subtle bg-border-subtle lg:grid-cols-4">
           {[
-            { label: "Degree path", value: "UBC", detail: "Biophysics", icon: "◆" },
-            { label: "Public projects", value: "02", detail: "documented repos", icon: "◇" },
-            { label: "Signal work", value: "EEG", detail: "spectral analysis", icon: "○" },
-            { label: "Availability", value: "2027", detail: "research & internships", icon: "△" },
+            { label: "Current role", value: "MINT", detail: "firmware engineer", icon: "◆" },
+            { label: "Team recognition", value: "2026", detail: "Simon Cox Innovation Award", icon: "◇" },
+            { label: "Signal work", value: "EEG", detail: "analysis + feature workflows", icon: "○" },
+            { label: "Next anchor", value: "2027", detail: "research / co-op target", icon: "△" },
           ].map((stat, i) => (
             <ScrollReveal key={stat.label} delay={200 + i * 100}>
               <div className="group relative bg-black-deep/90 px-6 py-8 backdrop-blur-sm transition-all duration-300 hover:bg-black-elevated/90 lg:px-10 lg:py-10">
@@ -139,4 +141,3 @@ export function About() {
     </section>
   );
 }
-

@@ -91,7 +91,7 @@ export function Hero() {
           <span className="h-[1px] w-4 bg-text-muted/40" />
           <span>Neural Engineering</span>
           <span className="h-[1px] w-4 bg-text-muted/40" />
-          <span>ML</span>
+          <span>Assistive BCI</span>
         </div>
 
         {/* Name — with 3D mouse tilt */}
@@ -131,7 +131,7 @@ export function Hero() {
           style={{ animationDelay: "0.8s", animationFillMode: "both" }}
         >
           <WordReveal
-            text="UBC biophysics undergraduate building evidence-backed tools in neural signal analysis, machine learning, and personal intelligence."
+            text="UBC biophysics undergraduate working across EEG signal processing, embedded neurotechnology, and research-grade tools for assistive communication."
             className="font-body text-[clamp(0.95rem,1.6vw,1.25rem)] font-light leading-relaxed text-text-secondary"
             wordDelay={200}
             staggerMs={50}
@@ -143,7 +143,7 @@ export function Hero() {
           className="mt-8 flex animate-fade-in-up flex-wrap items-center justify-center gap-3 font-mono text-[11px] uppercase tracking-[0.15em] text-text-muted"
           style={{ animationDelay: "1s", animationFillMode: "both" }}
         >
-          {["Biophysics", "Neural Engineering", "Machine Learning", "Biological Systems"].map((tag) => (
+          {["EEG Signal Processing", "Embedded Neurotech", "Assistive BCI", "Biophysics"].map((tag) => (
             <span
               key={tag}
               className="group/tag relative overflow-hidden border border-border-subtle px-3 py-1.5 transition-all hover:border-vermilion/30"
@@ -186,8 +186,8 @@ export function Hero() {
         >
           {[
             { label: "Study", value: "UBC Biophysics" },
-            { label: "Public work", value: "02 linked projects" },
-            { label: "Availability", value: "Research · Summer 2027" },
+            { label: "Current role", value: "Firmware · UBC MINT" },
+            { label: "Trajectory", value: "Research / co-op · 2027" },
           ].map((item) => (
             <div key={item.label} className="border-b border-border-subtle bg-black-deep/70 px-5 py-4 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
               <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-text-muted">
@@ -203,7 +203,6 @@ export function Hero() {
     </section>
   );
 }
-
 
 
 
