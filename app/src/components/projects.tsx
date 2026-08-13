@@ -7,7 +7,7 @@ type ProjectTab = "software" | "neurotech" | "coming-soon";
 const tabs: { key: ProjectTab; label: string }[] = [
   { key: "software", label: "Software" },
   { key: "neurotech", label: "Neurotech" },
-  { key: "coming-soon", label: "Coming Soon" },
+  { key: "coming-soon", label: "Research directions" },
 ];
 
 const circuitUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/2b36a9a7-79fb-4b23-8b40-8a10e3ed0eff.jpg";
@@ -247,17 +247,30 @@ function SoftwareProjects() {
             Personal Intelligence Infrastructure
           </div>
           <p className="mt-4 font-body text-sm leading-relaxed text-text-secondary">
-            An AI-native operating system for personal intelligence. Pattern OS
-            continuously analyzes your digital behavior, syncs with Notion and
-            Calendar, detects productivity patterns, and builds a dynamic model
-            of how you work, think, and decide.
+            A personal intelligence dashboard organized around physical, mental,
+            financial, and spiritual health. The prototype pairs a React
+            interface with a Node/Express API, SQLite storage, Notion and Google
+            Calendar connections, plus Claude-assisted journal analysis.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
-            {["AI Planning", "Pattern Detection", "Notion Sync", "Calendar Integration"].map((tag) => (
+            {["React", "Node / Express", "SQLite", "Notion", "Google Calendar", "Claude AI"].map((tag) => (
               <span key={tag} className="border border-border-subtle px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-text-muted transition-colors hover:border-vermilion/30 hover:text-vermilion">
                 {tag}
               </span>
             ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href="https://github.com/furqazaheervi6/Patttern-OS"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-vermilion/50 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-vermilion transition-colors hover:border-vermilion hover:bg-vermilion/5"
+            >
+              View source
+            </a>
+            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-muted">
+              Prototype · local-first
+            </span>
           </div>
         </div>
       </div>
@@ -267,11 +280,11 @@ function SoftwareProjects() {
 
 function NeurotechProjects() {
   const pipelineSteps = [
-    { title: "Assistive Goal", desc: "Restore communication for individuals with locked-in syndrome through real-time neural decoding of imagined speech from EEG signals." },
-    { title: "Headset System", desc: "Custom electrode placement targeting motor cortex (C3, Cz, C4) with active shielding and 256 Hz sampling for high-fidelity signal capture." },
-    { title: "Electrode Strategy", desc: "14-channel dry-electrode montage optimized for signal-to-noise ratio in non-laboratory environments, with ICA-based artifact rejection." },
-    { title: "Signal Processing", desc: "Bandpass filtering (0.5-50 Hz), common average referencing, and wavelet denoising pipeline running at sub-100ms latency." },
-    { title: "Model Evaluation", desc: "CNN-LSTM hybrid architecture achieving 82% accuracy across 4-class imagined speech classification with subject-independent transfer learning." },
+    { title: "Data Collection", desc: "Collected short EEG epochs from a Mark IV Ultracortex headset as the basis for quantitative signal analysis." },
+    { title: "Spectral Analysis", desc: "Computed Fourier transforms and power spectral density estimates to describe frequency-domain signal content." },
+    { title: "Cross Spectra", desc: "Calculated cross-spectral terms to characterize frequency-domain covariance between EEG channels." },
+    { title: "Coherence", desc: "Estimated normalized coherence after smoothing to examine consistency between signals across frequencies." },
+    { title: "Phase Shift", desc: "Computed phase differences as an additional view of the relationship between signals over frequency." },
   ];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -334,13 +347,13 @@ function NeurotechProjects() {
 
         <div className="flex flex-col justify-center">
           <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-vermilion">
-            Case Study
+            Documented Project
           </div>
           <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] text-text-primary lg:text-3xl">
-            MINT / MindTap
+            EEG Quantitative Statistical Analysis
           </h3>
           <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-text-muted">
-            EEG-based BCI for Assistive Communication
+            Spectral &amp; coherence analysis for EEG signals
           </div>
           <div className="mt-6 flex gap-2">
             {pipelineSteps.map((_, i) => (
@@ -360,9 +373,22 @@ function NeurotechProjects() {
             ))}
           </div>
           <div className="mt-6 flex flex-wrap gap-2">
-            {["BCI", "EEG", "Signal Processing", "Deep Learning"].map((tag) => (
+            {["EEG", "Fourier Analysis", "Power Spectral Density", "Coherence", "Phase Analysis"].map((tag) => (
               <span key={tag} className="border border-border-subtle px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-text-muted transition-colors hover:border-vermilion/30 hover:text-vermilion">{tag}</span>
             ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href="https://github.com/furqazaheervi6/EEG-Quantitative-Statistical-Analysis"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-vermilion/50 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-vermilion transition-colors hover:border-vermilion hover:bg-vermilion/5"
+            >
+              View analysis
+            </a>
+            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-muted">
+              Mark IV Ultracortex
+            </span>
           </div>
         </div>
       </div>
@@ -380,7 +406,13 @@ function ComingSoonProjects() {
   ];
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2">
+    <div>
+      <p className="mb-8 max-w-2xl font-body text-sm leading-relaxed text-text-secondary">
+        These are active questions and possible future systems, not completed
+        projects. They show the directions I am investigating as I build a
+        stronger research and engineering foundation.
+      </p>
+      <div className="grid gap-6 sm:grid-cols-2">
       {projects.map((p, i) => (
         <div
           key={p.title}
@@ -399,10 +431,10 @@ function ComingSoonProjects() {
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 }
-
 
 
 

@@ -131,7 +131,7 @@ export function Hero() {
           style={{ animationDelay: "0.8s", animationFillMode: "both" }}
         >
           <WordReveal
-            text="Biophysics undergraduate building across neural engineering, machine learning, biological systems, software, mathematics, and personal intelligence tools."
+            text="UBC biophysics undergraduate building evidence-backed tools in neural signal analysis, machine learning, and personal intelligence."
             className="font-body text-[clamp(0.95rem,1.6vw,1.25rem)] font-light leading-relaxed text-text-secondary"
             wordDelay={200}
             staggerMs={50}
@@ -166,14 +166,16 @@ export function Hero() {
             <span className="absolute inset-0 -translate-x-full skew-x-12 bg-gradient-to-r from-transparent via-vermilion/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             <span className="relative z-10 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full border border-vermilion/60 transition-all group-hover:bg-vermilion" />
-              View projects
+              View work
             </span>
           </a>
           <a
-            href="#contact"
+            href="https://github.com/furqazaheervi6"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative inline-flex items-center gap-2 border border-border-subtle px-7 py-3 font-mono text-xs uppercase tracking-[0.15em] text-text-secondary transition-all hover:border-text-secondary hover:text-text-primary"
           >
-            <span className="relative z-10">Contact</span>
+            <span className="relative z-10">GitHub</span>
           </a>
         </div>
 
@@ -187,15 +189,14 @@ export function Hero() {
               <span className="h-1.5 w-1.5 rounded-full bg-vermilion" />
               <span className="absolute -inset-1 animate-ping rounded-full bg-vermilion/30" />
             </span>
-            Open to research
+            Open to research &amp; Summer 2027 internships
           </span>
-          <span>INTELLIGENCE LAB</span>
+          <span>VANCOUVER, BC</span>
         </div>
       </div>
     </section>
   );
 }
-
 
 
 

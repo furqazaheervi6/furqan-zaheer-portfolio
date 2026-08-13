@@ -61,7 +61,7 @@ export function Contact() {
 
                 {/* GitHub */}
                 <a
-                  href="https://github.com"
+                  href="https://github.com/furqazaheervi6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group/card flex items-center justify-between border border-border-card bg-black-elevated px-5 py-4 transition-all duration-300 hover:border-text-muted"
@@ -71,7 +71,7 @@ export function Contact() {
                       GitHub
                     </div>
                     <div className="mt-1 font-body text-sm text-text-primary transition-colors duration-300 group-hover/card:text-text-secondary">
-                      /furqanzaheer
+                      /furqazaheervi6
                     </div>
                   </div>
                   <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-muted transition-colors duration-300 group-hover/card:text-text-secondary">
@@ -148,7 +148,6 @@ export function Contact() {
     </section>
   );
 }
-
 
 
 

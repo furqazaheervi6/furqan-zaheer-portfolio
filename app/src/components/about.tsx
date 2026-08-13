@@ -1,5 +1,4 @@
 import { ScrollReveal } from "./scroll-reveal";
-import { AnimatedCounter } from "./animated-counter";
 import { TextHoverViz } from "./text-hover-viz";
 
 const circuitUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/2b36a9a7-79fb-4b23-8b40-8a10e3ed0eff.jpg";
@@ -68,36 +67,35 @@ export function About() {
             <div className="space-y-6 font-body text-sm leading-relaxed text-text-secondary">
               <TextHoverViz>
                 <p>
-                  I am a biophysics undergraduate focused on the intersection of
-                  neural engineering, machine learning, and biological systems. My
-                  work spans building personal intelligence infrastructure,
-                  brain-computer interfaces, and software that bridges the gap
-                  between biological signal processing and computational models.
+                  I am a UBC biophysics undergraduate interested in neural
+                  engineering, machine learning, and biological systems. I build
+                  small, inspectable systems that connect signal analysis,
+                  mathematical reasoning, and useful software.
                 </p>
               </TextHoverViz>
               <p>
-                I approach every domain — whether it is neural signal processing,
-                mathematical theory, or systems architecture — as an engineering
-                problem to be formalized, modeled, and solved. This extends beyond
-                science into the design of tools that augment human cognition and
-                decision-making.
+                My current public work includes an EEG spectral and coherence
+                analysis project for signals collected with a Mark IV Ultracortex
+                headset, plus Pattern OS, a personal intelligence dashboard that
+                connects Notion, Google Calendar, and AI-assisted reflection.
               </p>
               <p>
-                Currently exploring how principles from linear algebra,
-                computational theory, and biophysical mathematics can inform new
-                approaches to neural decoding and personal intelligence systems.
+                I am building the quantitative foundation for research in
+                biophysics and neural engineering, with particular interest in
+                how linear algebra, signal processing, and machine learning can
+                help model living systems.
               </p>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* Stats row */}
+        {/* Evidence row */}
         <div className="relative mt-20 grid grid-cols-2 gap-px border-t border-border-subtle bg-border-subtle lg:grid-cols-4">
           {[
-            { label: "Domains", value: 6, icon: "◆" },
-            { label: "Projects Built", value: 12, icon: "◇", suffix: "+" },
-            { label: "Research Areas", value: 5, icon: "○" },
-            { label: "Active Systems", value: 4, icon: "△" },
+            { label: "Degree path", value: "UBC", detail: "Biophysics", icon: "◆" },
+            { label: "Public projects", value: "02", detail: "documented repos", icon: "◇" },
+            { label: "Signal work", value: "EEG", detail: "spectral analysis", icon: "○" },
+            { label: "Availability", value: "2027", detail: "research & internships", icon: "△" },
           ].map((stat, i) => (
             <ScrollReveal key={stat.label} delay={200 + i * 100}>
               <div className="group relative bg-black-deep/90 px-6 py-8 backdrop-blur-sm transition-all duration-300 hover:bg-black-elevated/90 lg:px-10 lg:py-10">
@@ -105,16 +103,15 @@ export function About() {
                   <span className="font-mono text-xs text-vermilion/40 transition-all duration-300 group-hover:text-vermilion/70">
                     {stat.icon}
                   </span>
-                  <AnimatedCounter
-                    end={stat.value}
-                    suffix={stat.suffix || ""}
-                    duration={1800}
-                    delay={i * 200}
-                    className="font-mono text-[28px] font-medium leading-none tracking-tight text-vermilion transition-all duration-300 group-hover:tracking-[-0.02em] lg:text-[36px]"
-                  />
+                  <span className="font-mono text-[24px] font-medium leading-none tracking-tight text-vermilion transition-all duration-300 group-hover:tracking-[-0.02em] lg:text-[30px]">
+                    {stat.value}
+                  </span>
                 </div>
                 <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-text-muted">
                   {stat.label}
+                </div>
+                <div className="mt-1 font-body text-xs text-text-secondary">
+                  {stat.detail}
                 </div>
                 <div className="mt-2 h-[1px] w-0 bg-gradient-to-r from-vermilion/20 to-transparent transition-all duration-500 group-hover:w-full" />
               </div>
@@ -125,7 +122,5 @@ export function About() {
     </section>
   );
 }
-
-
 
 
