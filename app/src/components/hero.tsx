@@ -5,9 +5,7 @@ import { HeroRing } from "./hero-ring";
 import { MouseTilt } from "./mouse-tilt";
 import { WordReveal } from "./word-reveal";
 
-const mechanicalOrganismUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/bc44fc3a-63bf-49c2-918d-a1d83c2ae748.jpg";
-const mahoragaUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/c2701bef-3191-492e-a965-921228b08dbe.jpg";
-const mahoragaGifUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/b4274feb-67d2-4eac-b1cd-36d6cd114cd5.gif";
+const higgsfieldSignalFieldUrl = "https://d8j0ntlcm91z4.cloudfront.net/user_2xwIPr50KlEwsiMAVmRtkFMSPij/hf_20260814_231724_a138573a-05c6-4dc8-a9cc-877a1d2df9e0.png";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -24,49 +22,26 @@ export function Hero() {
       id="hero"
       className="relative z-10 flex min-h-[100dvh] items-center justify-center overflow-hidden px-6 pt-24 lg:px-12"
     >
-      {/* Biomechanical background — embedded with screen blend */}
+      {/* Generated signal field — designed for readable central copy */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url(${mechanicalOrganismUrl})`,
-            opacity: "0.18",
-            mixBlendMode: "screen" as const,
-            filter: "grayscale(100%) contrast(1.6) brightness(1.2)",
+            backgroundImage: `url(${higgsfieldSignalFieldUrl})`,
+            opacity: "0.94",
+            filter: "contrast(1.12) brightness(1.08)",
           }}
         />
-        {/* Edge fade — radial mask so the image disappears into the edges */}
         <div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(ellipse 70% 60% at 50% 50%, transparent 30%, #080808 100%)",
+            background: "radial-gradient(ellipse 50% 56% at 50% 46%, rgba(8,8,8,0.03) 0%, rgba(8,8,8,0.35) 68%, #080808 100%)",
           }}
         />
-        {/* Gradient vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black-deep via-transparent to-black-deep/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black-deep/45 via-transparent to-black-deep/70" />
       </div>
 
-      {/* Mahoraga wheel — animated GIF, large overarching figure */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 lg:h-[1000px] lg:w-[1000px]" style={{ mixBlendMode: "screen" as const, opacity: "0.18" }}>
-        <img
-          src={mahoragaGifUrl}
-          alt=""
-          className="h-full w-full object-contain"
-          style={{ filter: "grayscale(100%) brightness(2) contrast(1.3)" }}
-        />
-      </div>
-
-      {/* Second wheel — lower left, smaller, static */}
-      <div className="pointer-events-none absolute bottom-[18%] left-[5%] z-0 h-16 w-16 lg:h-24 lg:w-24" style={{ mixBlendMode: "screen" as const, opacity: "0.05" }}>
-        <img
-          src={mahoragaUrl}
-          alt=""
-          className="h-full w-full object-contain"
-          style={{ filter: "grayscale(100%) brightness(2) contrast(1.3)" }}
-
-        />
-      </div>
-      {/* Animated geometric ring backdrop */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[min(78vw,820px)] w-[min(78vw,820px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-vermilion/[0.07] shadow-[0_0_120px_rgba(220,38,38,0.035)]" />
       <HeroRing />
 
       {/* Radial vermillion vignette */}
@@ -95,7 +70,7 @@ export function Hero() {
         </div>
 
         {/* Name — with 3D mouse tilt */}
-        <MouseTilt maxTilt={4} scale={1.01} className="inline-block cursor-default">
+        <MouseTilt maxTilt={2} scale={1.005} className="inline-block cursor-default">
           <h1 className="font-display text-[clamp(3rem,10vw,7rem)] font-bold leading-[0.9] tracking-[-0.04em] text-text-primary">
             {Array.from("Furqan").map((char, i) => (
               <span
@@ -203,8 +178,6 @@ export function Hero() {
     </section>
   );
 }
-
-
 
 
 
